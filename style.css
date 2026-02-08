@@ -528,6 +528,79 @@ header.scrolled .hamburger {
     /* Couleur Instagram générique ou utiliser var(--accent-color) */
 }
 
+/* --- Section Avis Google --- */
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.review-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eee;
+    transition: 0.3s;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.reviewer-initial {
+    width: 40px;
+    height: 40px;
+    background-color: #E25822;
+    /* Orange aléatoire */
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-right: 15px;
+}
+
+.reviewer-info h4 {
+    font-family: var(--font-body);
+    /* Pas le titre fancy, plus simple */
+    font-size: 1rem;
+    margin: 0;
+    color: #333;
+    font-weight: 700;
+}
+
+.reviewer-info .stars {
+    color: #FFD700;
+    font-size: 0.8rem;
+}
+
+.review-text {
+    font-style: italic;
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.google-icon {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0.5;
+}
+
 /* --- Footer --- */
 /* --- Footer --- */
 footer {
@@ -572,4 +645,16 @@ footer {
 
 .location-card:nth-child(5) {
     transition-delay: 0.8s;
+}
+
+.review-card:nth-child(1) {
+    transition-delay: 0s;
+}
+
+.review-card:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.review-card:nth-child(3) {
+    transition-delay: 0.4s;
 }
