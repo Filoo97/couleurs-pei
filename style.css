@@ -1,0 +1,575 @@
+/* 
+ * Charte Graphique : COULEURS PÉÏ
+ * Couleurs :
+ * - Bleu Marine (Fond/Textes foncés) : #1A2B42 (Estimation visuelle logo)
+ * - Or / Moutarde (Accents/Titres) : #D4AF37 (Estimation visuelle logo)
+ * - Blanc cassé (Fond clair) : #F9F9F9
+ */
+
+:root {
+    --primary-color: #ba9669;
+    /* Or/Beige (Nouveau) */
+    --secondary-color: #2c3a51;
+    /* Bleu Marine (Nouveau) */
+    --accent-color: #cbd3e0;
+    /* Bleu Gris (Nouveau - utilisé pour les badges ou fonds secondaires) */
+    --action-color: #E25822;
+    /* Conserver une couleur vive pour les boutons d'appel à l'action ? Ou utiliser le doré ? On va tester. */
+    --bg-light: #F9F9F9;
+    --bg-dark: #2c3a51;
+    /* On aligne le fond sombre sur la couleur secondaire */
+    --text-main: #333333;
+    --text-light: #FFFFFF;
+
+    /* Polices */
+    --font-heading: 'Patua One', serif;
+    --font-body: 'Montserrat', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: 0.3s;
+}
+
+ul {
+    list-style: none;
+}
+
+/* --- Layout Utilities --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-padding {
+    padding: 80px 0;
+}
+
+/* --- Typography --- */
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-heading);
+    color: var(--secondary-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+h1 {
+    font-size: 3.5rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+/* --- Buttons --- */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #fff;
+    /* Texte blanc pour meilleur contraste sur le doré */
+}
+
+.btn-primary:hover {
+    background-color: #a38258;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: var(--text-light);
+}
+
+.btn-secondary:hover {
+    background-color: #1a2332;
+    transform: translateY(-2px);
+}
+
+/* --- Header --- */
+header {
+    background-color: transparent;
+    /* Fond transparent demandé */
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: 0.4s ease;
+    /* Animation fluide lors du changement de couleur */
+    padding: 10px 0;
+}
+
+/* État du header au scroll (ajouté via JS) */
+header.scrolled {
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 0;
+    /* Réduit la taille au scroll */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 120px;
+    /* Header plus haut pour le grand logo */
+    transition: 0.4s ease;
+}
+
+header.scrolled .navbar {
+    height: 80px;
+    /* Header plus compact au scroll */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 110px;
+    /* Logo agrandi (valeur initiale) */
+    width: auto;
+    transition: 0.4s ease;
+}
+
+header.scrolled .logo-img {
+    height: 70px;
+    /* Logo réduit au scroll pour ne pas gêner */
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    /* Alignement vertical centré pour le bouton */
+    /* Assure que le texte et le bouton 'Réserver' sont centrés verticalement */
+}
+
+.nav-links a {
+    font-weight: 600;
+    color: #fff;
+    /* Texte blanc par défaut pour être visible sur la photo sombre */
+    font-size: 1rem;
+    text-transform: uppercase;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    /* Légère ombre pour lisibilité */
+}
+
+header.scrolled .nav-links a {
+    color: var(--secondary-color);
+    /* Texte redevenant sombre sur fond blanc */
+    text-shadow: none;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+/* --- Mobile Menu --- */
+.hamburger {
+    display: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+header.scrolled .hamburger {
+    color: var(--secondary-color);
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+        z-index: 1001;
+        /* Au dessus du menu déroulant */
+    }
+
+    .nav-links {
+        display: none;
+        /* Caché par défaut via CSS, affiché via JS */
+        flex-direction: column;
+        position: fixed;
+        /* Fixé pour prendre tout l'écran */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: var(--secondary-color);
+        /* Fond bleu marine "Premium" */
+        padding-top: 100px;
+        /* Espace pour le logo */
+        box-shadow: none;
+        text-align: center;
+        z-index: 999;
+    }
+
+    .nav-links.active {
+        display: flex;
+        /* Classe ajoutée par JS pour afficher */
+    }
+
+    .nav-links a {
+        color: #fff;
+        /* Blanc sr fond bleu */
+        font-size: 1.5rem;
+        /* Plus gros pour le tactile */
+        padding: 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .navbar {
+        padding: 0 20px;
+        height: 80px;
+        /* Hauteur fixe mobile */
+    }
+
+    .logo-img {
+        height: 60px;
+        /* Logo adapté mobile */
+    }
+
+    header.scrolled .navbar {
+        height: 70px;
+    }
+
+    /* Hero Section Mobile */
+    .hero-content h1 {
+        font-size: 2.2rem;
+        /* Titre plus petit */
+        line-height: 1.2;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+        padding: 0 20px;
+    }
+
+    .btn {
+        display: block;
+        /* Boutons en colonne sur mobile */
+        width: 100%;
+        margin: 10px 0 !important;
+        text-align: center;
+    }
+
+    /* Ajustements généraux */
+    .section-padding {
+        padding: 50px 0;
+        /* Moins d'espace vertical */
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+}
+
+/* --- Hero Section --- */
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(44, 58, 81, 0.6), rgba(44, 58, 81, 0.4)), url('https://images.unsplash.com/photo-1555126634-323283e090fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--text-light);
+    /* Pas de padding-top exagéré car le header est transparent au dessus */
+}
+
+.hero-content h1 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- Sections Common --- */
+.section-title span {
+    color: var(--primary-color);
+}
+
+/* --- Section Menu --- */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.menu-item {
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    transition: 0.3s;
+    border: 1px solid #eee;
+}
+
+.menu-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.menu-item.highlight {
+    border: 2px solid var(--primary-color);
+    position: relative;
+}
+
+.menu-img-container {
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.menu-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s;
+}
+
+.menu-item:hover .menu-img-container img {
+    transform: scale(1.1);
+}
+
+.badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: var(--secondary-color);
+    color: #fff;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.badge.new {
+    background-color: var(--accent-color);
+}
+
+.menu-content {
+    padding: 25px;
+    text-align: center;
+}
+
+.menu-content h3 {
+    margin-bottom: 10px;
+    color: var(--secondary-color);
+}
+
+.menu-content p {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.date-info {
+    color: var(--primary-color) !important;
+    font-weight: 700;
+    font-size: 0.85rem !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- Section Emplacements & Contact --- */
+.location-list {
+    display: flex;
+    /* Restauré : Indispensable pour l'alignement horizontal */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+    align-items: stretch;
+    /* Hauteur uniforme */
+}
+
+.location-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    width: 280px;
+    text-align: center;
+    border-left: 4px solid var(--primary-color);
+
+    /* Flex column pour pousser le bouton en bas */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.location-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.location-card p {
+    margin-bottom: 10px;
+}
+
+/* Important: Pousser le dernier élément (bouton) tout en bas */
+.location-card .btn-map {
+    margin-top: auto;
+}
+
+.btn-map {
+    display: inline-block;
+    padding: 10px 25px;
+    /* Taille bouton confortable */
+    background-color: var(--secondary-color);
+    color: #fff;
+    border-radius: 50px;
+    /* Forme Pilule */
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+    letter-spacing: 0.5px;
+    border: none;
+}
+
+.btn-map:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.contact-form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: var(--font-body);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+}
+
+
+.btn-map.social {
+    background-color: #C13584;
+    /* Couleur Instagram générique ou utiliser var(--accent-color) */
+}
+
+/* --- Footer --- */
+/* --- Footer --- */
+footer {
+    background-color: var(--secondary-color);
+    color: var(--text-light);
+    text-align: center;
+    padding: 40px 0;
+}
+
+/* --- Animations au Scroll --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Délai pour les éléments en grille (effet cascade) */
+.menu-item:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.menu-item:nth-child(3) {
+    transition-delay: 0.4s;
+}
+
+.location-card:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.location-card:nth-child(3) {
+    transition-delay: 0.4s;
+}
+
+.location-card:nth-child(4) {
+    transition-delay: 0.6s;
+}
+
+.location-card:nth-child(5) {
+    transition-delay: 0.8s;
+}
