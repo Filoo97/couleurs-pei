@@ -255,6 +255,12 @@ header.scrolled .hamburger {
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
+    /* Croix fermeture explicite dans le menu */
+    .menu-close-btn {
+        display: none;
+        /* Caché par défaut */
+    }
+
     /* Fix: Hamburger blanc quand le menu est ouvert (sur fond bleu), même si scrollé */
     .nav-links.active~.hamburger {
         color: #fff !important;
@@ -303,6 +309,18 @@ header.scrolled .hamburger {
 
     h2 {
         font-size: 2rem;
+    }
+
+    /* Croix visible sur mobile uniquement et bien placée */
+    .menu-close-btn {
+        display: block;
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        color: #fff;
+        font-size: 2rem;
+        cursor: pointer;
+        z-index: 1002;
     }
 }
 
