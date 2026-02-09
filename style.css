@@ -247,12 +247,17 @@ header.scrolled .hamburger {
     }
 
     .nav-links a {
-        color: #fff;
-        /* Blanc sr fond bleu */
+        color: #fff !important;
+        /* Blanc sur fond bleu FORCE (Fix bug scroll) */
         font-size: 1.5rem;
         /* Plus gros pour le tactile */
         padding: 20px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Fix: Hamburger blanc quand le menu est ouvert (sur fond bleu), même si scrollé */
+    .nav-links.active~.hamburger {
+        color: #fff !important;
     }
 
     .navbar {
