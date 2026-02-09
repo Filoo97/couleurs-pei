@@ -13,7 +13,7 @@
         rel="stylesheet">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="style.css?v=3">
+    <link rel="stylesheet" href="style.css?v=4">
 
     <!-- Font Awesome pour les icônes -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -72,9 +72,57 @@
                     cap selon le jour).</p>
             </div>
 
+            <!-- Filtres -->
+            <div class="menu-filters reveal">
+                <button class="filter-btn active" data-filter="all">Tout</button>
+                <button class="filter-btn" data-filter="apero">Apéritifs</button>
+                <button class="filter-btn" data-filter="plat">Plats</button>
+                <button class="filter-btn" data-filter="dessert">Desserts</button>
+            </div>
+
             <div class="menu-grid">
-                <!-- Plat Fixe 1 -->
-                <div class="menu-item reveal">
+                <!-- APÉRITIFS -->
+                <div class="menu-item reveal" data-category="apero">
+                    <div class="menu-img-container">
+                        <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Samoussas">
+                        <span class="badge">Incontournable</span>
+                    </div>
+                    <div class="menu-content">
+                        <h3>Samoussas</h3>
+                        <p>Nos fameux triangles croustillants maison. Disponibles au Poulet, Porc, Fromage ou Légumes
+                            selon l'humeur du chef !</p>
+                    </div>
+                </div>
+
+                <div class="menu-item reveal" data-category="apero">
+                    <div class="menu-img-container">
+                        <img src="https://images.unsplash.com/photo-1541529086526-db283c563270?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Bouchons">
+                        <span class="badge">Fait Maison</span>
+                    </div>
+                    <div class="menu-content">
+                        <h3>Bouchons</h3>
+                        <p>Bouchées vapeur gourmandes (Poulet ou Porc) relevées au combava. Le cousin réunionnais du Dim
+                            Sum.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item reveal" data-category="apero">
+                    <div class="menu-img-container">
+                        <img src="https://images.unsplash.com/photo-1626074353765-517a681e40be?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Bonbons Piments">
+                        <span class="badge">Épicé</span>
+                    </div>
+                    <div class="menu-content">
+                        <h3>Bonbons Piments</h3>
+                        <p>Beignets croustillants et moelleux à base de pois du cap, curcuma, épices et piment frais. Ça
+                            réveille !</p>
+                    </div>
+                </div>
+
+                <!-- PLATS -->
+                <div class="menu-item reveal" data-category="plat">
                     <div class="menu-img-container">
                         <img src="https://images.unsplash.com/photo-1574484284002-952d92456975?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                             alt="Rougail Saucisse">
@@ -82,14 +130,12 @@
                     </div>
                     <div class="menu-content">
                         <h3>Rougail Saucisse</h3>
-                        <p>L'incontournable de la Réunion. Saucisses fumées mijotées dans une sauce tomate aux épices et
+                        <p>L'emblème de la Réunion. Saucisses fumées mijotées dans une sauce tomate aux épices et
                             combava.</p>
-                        <!-- <span class="price">12€</span> -->
                     </div>
                 </div>
 
-                <!-- Plat Fixe 2 -->
-                <div class="menu-item reveal">
+                <div class="menu-item reveal" data-category="plat">
                     <div class="menu-img-container">
                         <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                             alt="Cari Poulet">
@@ -99,23 +145,47 @@
                         <h3>Cari Poulet</h3>
                         <p>Poulet fermier cuisiné à la créole avec curcuma, gingembre et thym. Un classique
                             réconfortant.</p>
-                        <!-- <span class="price">11€</span> -->
                     </div>
                 </div>
 
-                <!-- Plat du Moment -->
-                <div class="menu-item highlight reveal">
+                <div class="menu-item highlight reveal" data-category="plat">
                     <div class="menu-img-container">
                         <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                             alt="Plat du moment">
-                        <span class="badge new">Suggestion du moment</span>
+                        <span class="badge new">Suggestion</span>
                     </div>
                     <div class="menu-content">
                         <h3>Cari Thon Combava</h3>
                         <p class="date-info">Disponible cette semaine</p>
                         <p>Thon frais cuisiné avec du combava pour une touche de fraîcheur unique. Une explosion de
                             saveurs péï.</p>
-                        <!-- <span class="price">14€</span> -->
+                    </div>
+                </div>
+
+                <!-- DESSERTS -->
+                <div class="menu-item reveal" data-category="dessert">
+                    <div class="menu-img-container">
+                        <img src="https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Gâteau Patate">
+                        <span class="badge">Douceur</span>
+                    </div>
+                    <div class="menu-content">
+                        <h3>Gâteau Patate</h3>
+                        <p>Gâteau traditionnel à la patate douce et vanille de la Réunion. Une texture crémeuse unique.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="menu-item reveal" data-category="dessert">
+                    <div class="menu-img-container">
+                        <img src="https://images.unsplash.com/photo-1551024601-564552055610?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Flan Coco">
+                        <span class="badge">Best Seller</span>
+                    </div>
+                    <div class="menu-content">
+                        <h3>Flan Coco</h3>
+                        <p>Flan onctueux avec de la noix de coco fraîche et une texture crémeuse. Les clients l'adorent
+                            !</p>
                     </div>
                 </div>
             </div>
@@ -318,6 +388,34 @@
 
         revealElements.forEach(el => {
             revealObserver.observe(el);
+        });
+
+        // --- Filtrage du Menu ---
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const menuItems = document.querySelectorAll('.menu-item[data-category]');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Gestion de la classe active
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                menuItems.forEach(item => {
+                    const itemCategory = item.getAttribute('data-category');
+
+                    if (filterValue === 'all' || filterValue === itemCategory) {
+                        item.style.display = 'block';
+                        // Re-déclencher l'animation
+                        item.style.animation = 'none';
+                        item.offsetHeight; /* trigger reflow */
+                        item.style.animation = 'fadeIn 0.5s ease forwards';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
         });
     </script>
 
