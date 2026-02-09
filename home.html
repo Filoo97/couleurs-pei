@@ -29,6 +29,10 @@
             </a>
             <nav>
                 <ul class="nav-links">
+                    <!-- Croix de fermeture (Mobile uniquement) -->
+                    <div class="menu-close-btn">
+                        <i class="fas fa-times"></i>
+                    </div>
                     <li><a href="#accueil">Accueil</a></li>
                     <li><a href="#concept">Le Concept</a></li>
                     <li><a href="#carte">La Carte</a></li>
@@ -423,17 +427,32 @@
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
 
+        // Toggle via Hamburger
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
             const icon = hamburger.querySelector('i');
             if (navLinks.classList.contains('active')) {
                 icon.classList.remove('fa-bars');
+                // On cache l'icone hamburger quand le menu est ouvert car on a la croix dedans
+                // ou on la laisse en croix, au choix. Ici on la laisse transformer.
                 icon.classList.add('fa-times');
             } else {
                 icon.classList.remove('fa-times');
                 icon.classList.add('fa-bars');
             }
         });
+
+        // Fermeture via Croix dédiée (Nouveau)
+        const closeBtn = document.querySelector('.menu-close-btn');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                // Reset icone hamburger
+                const icon = hamburger.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        }
 
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
