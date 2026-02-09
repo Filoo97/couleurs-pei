@@ -13,7 +13,7 @@
         rel="stylesheet">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="style.css?v=4">
+    <link rel="stylesheet" href="style.css?v=5">
 
     <!-- Font Awesome pour les icônes -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -44,6 +44,7 @@
 
     <!-- Hero Section -->
     <section id="accueil" class="hero">
+        <div class="hero-background"></div>
         <div class="container hero-content">
             <h1>Le Food-Truck aux saveurs de la Réunion</h1>
             <p>Une cuisine authentique, épicée et généreuse. Retrouvez le goût du voyage dans votre assiette.</p>
@@ -52,6 +53,13 @@
                 Trouver</a>
         </div>
     </section>
+
+    <!-- Mobile Sticky Button -->
+    <div class="mobile-sticky-btn-container">
+        <a href="#reservation" class="mobile-sticky-btn">
+            <i class="fas fa-calendar-check" style="margin-right: 8px;"></i> Réserver
+        </a>
+    </div>
 
     <!-- Section Concept -->
     <section id="concept" class="section-padding">
@@ -358,7 +366,39 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Couleurs Péï - Food Truck Réunionnais</p>
+            <div class="footer-content">
+                <!-- Colonne 1 : Marque -->
+                <div class="footer-col">
+                    <img src="logo.png" alt="Couleurs Péï" style="height: 60px; margin-bottom: 20px;">
+                    <p>L'authenticité de la cuisine réunionnaise, itinérante et passionnée. Fait maison avec amour et
+                        épices.</p>
+                    <div class="footer-socials">
+                        <a href="https://instagram.com/couleurspei" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+
+                <!-- Colonne 2 : Contact -->
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-phone-alt"></i> 06 92 XX XX XX</p>
+                    <p><i class="fas fa-envelope"></i> contact@couleurspei.fr</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Yerres / Brunoy / Val d'Yerres</p>
+                </div>
+
+                <!-- Colonne 3 : Horaires -->
+                <div class="footer-col">
+                    <h3>Horaires</h3>
+                    <p><strong>Mardi - Samedi :</strong></p>
+                    <p>Midi : 11h30 - 14h00</p>
+                    <p>Soir : 18h30 - 21h00</p>
+                    <p><strong>Dimanche :</strong> Fermé (Sauf événement)</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Couleurs Péï - Food Truck Réunionnais | Site réalisé avec passion.</p>
+            </div>
         </div>
     </footer>
 

@@ -301,20 +301,48 @@ header.scrolled .hamburger {
     }
 }
 
-/* --- Hero Section --- */
+/* --- Hero Section (Refonte pour Animation) --- */
 .hero {
     height: 100vh;
-    background: linear-gradient(rgba(44, 58, 81, 0.7), rgba(44, 58, 81, 0.5)), url('Photo_Menu_Hero.png');
-    background-size: cover;
-    background-position: center;
+    position: relative;
+    overflow: hidden;
+    /* Indispensable pour ne pas que l'image sorte */
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: var(--text-light);
-    /* Pas de padding-top exagéré car le header est transparent au dessus */
 }
 
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(44, 58, 81, 0.7), rgba(44, 58, 81, 0.5)), url('Photo_Menu_Hero.png');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    animation: kenBurns 20s ease-in-out infinite alternate;
+}
+
+@keyframes kenBurns {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.15);
+    }
+}
+
+.hero-content {
+    z-index: 1;
+    /* Au-dessus de l'image animée */
+}
+
+/* ... (Reste des styles Hero Content inchangé) ... */
 .hero-content h1 {
     color: var(--primary-color);
     margin-bottom: 20px;
@@ -327,6 +355,117 @@ header.scrolled .hamburger {
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+}
+
+/* --- Mobile Sticky Button --- */
+.mobile-sticky-btn-container {
+    display: none;
+    /* Caché sur Desktop */
+}
+
+@media (max-width: 768px) {
+    .mobile-sticky-btn-container {
+        display: block;
+        position: fixed;
+        bottom: 20px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        z-index: 990;
+        /* En dessous du menu mobile (999) mais au dessus du contenu */
+        pointer-events: none;
+        /* Pour cliquer à travers le conteneur vide */
+    }
+
+    .mobile-sticky-btn {
+        pointer-events: auto;
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: #fff;
+        padding: 15px 30px;
+        border-radius: 50px;
+        font-weight: 700;
+        text-transform: uppercase;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        text-decoration: none;
+        font-size: 1rem;
+        animation: slideUp 1s ease-out;
+    }
+
+    @keyframes slideUp {
+        from {
+            transform: translateY(100px);
+        }
+
+        to {
+            transform: translateY(0);
+        }
+    }
+}
+
+
+/* --- Footer Pro --- */
+footer {
+    background-color: var(--secondary-color);
+    color: var(--text-light);
+    padding: 60px 0 30px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+.footer-col h3 {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.footer-col p {
+    margin-bottom: 10px;
+    color: #ddd;
+    font-size: 0.95rem;
+}
+
+.footer-col i {
+    color: var(--primary-color);
+    width: 25px;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.footer-socials {
+    margin-top: 20px;
+}
+
+.footer-socials a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    margin-right: 10px;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.footer-socials a:hover {
+    background: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
 }
 
 /* --- Sections Common --- */
@@ -652,14 +791,7 @@ header.scrolled .hamburger {
     opacity: 0.5;
 }
 
-/* --- Footer --- */
-/* --- Footer --- */
-footer {
-    background-color: var(--secondary-color);
-    color: var(--text-light);
-    text-align: center;
-    padding: 40px 0;
-}
+
 
 /* --- Animations au Scroll --- */
 .reveal {
