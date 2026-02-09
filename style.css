@@ -304,7 +304,7 @@ header.scrolled .hamburger {
 /* --- Hero Section --- */
 .hero {
     height: 100vh;
-    background: linear-gradient(rgba(44, 58, 81, 0.6), rgba(44, 58, 81, 0.4)), url('https://images.unsplash.com/photo-1555126634-323283e090fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+    background: linear-gradient(rgba(44, 58, 81, 0.7), rgba(44, 58, 81, 0.5)), url('Photo_Menu_Hero.png');
     background-size: cover;
     background-position: center;
     display: flex;
