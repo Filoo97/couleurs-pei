@@ -177,7 +177,7 @@ header.scrolled .logo-img {
 
 .nav-links {
     display: flex;
-    gap: 30px;
+    gap: 50px;
     align-items: center;
     /* Alignement vertical centré pour le bouton */
     /* Assure que le texte et le bouton 'Réserver' sont centrés verticalement */
