@@ -33,6 +33,8 @@
                     <li><a href="#concept">Le Concept</a></li>
                     <li><a href="#carte">La Carte</a></li>
                     <li><a href="#planning">Planning</a></li>
+                    <li><a href="#" class="protected-phone" style="font-weight: 700; color: var(--primary-color);"><i
+                                class="fas fa-phone-alt"></i> <span>...</span></a></li>
                     <li><a href="#reservation" class="btn btn-primary">Privatisez-moi</a></li>
                 </ul>
                 <div class="hamburger">
@@ -56,8 +58,8 @@
 
     <!-- Mobile Sticky Button -->
     <div class="mobile-sticky-btn-container">
-        <a href="#reservation" class="mobile-sticky-btn">
-            <i class="fas fa-calendar-check" style="margin-right: 8px;"></i> Réserver
+        <a href="#" class="mobile-sticky-btn protected-phone-btn">
+            <i class="fas fa-calendar-check" style="margin-right: 8px;"></i> Réserver / Appeler
         </a>
     </div>
 
@@ -381,7 +383,8 @@
                 <!-- Colonne 2 : Contact -->
                 <div class="footer-col">
                     <h3>Contact</h3>
-                    <p><i class="fas fa-phone-alt"></i> 06 92 XX XX XX</p>
+                    <p><i class="fas fa-phone-alt"></i> <a href="#" class="protected-phone"
+                            style="text-decoration:none; color: inherit;">...</a></p>
                     <p><i class="fas fa-envelope"></i> contact@couleurspei.fr</p>
                     <p><i class="fas fa-map-marker-alt"></i> Yerres / Brunoy / Val d'Yerres</p>
                 </div>
@@ -485,6 +488,40 @@
                     }
                 });
             });
+        });
+
+        // --- PROTECTION CONTRE LE SCRAPING (Numéro de Téléphone) ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const p1 = '06';
+            const p2 = '50';
+            const p3 = '84';
+            const p4 = '42';
+            const p5 = '47';
+
+            const fullNumber = p1 + p2 + p3 + p4 + p5;
+            const prettyNumber = p1 + ' ' + p2 + ' ' + p3 + ' ' + p4 + ' ' + p5;
+
+            const phoneLinks = document.querySelectorAll('.protected-phone');
+
+            phoneLinks.forEach(link => {
+                if (link.tagName === 'A') {
+                    link.href = 'tel:' + fullNumber;
+                    const span = link.querySelector('span');
+                    if (span) {
+                        span.textContent = prettyNumber;
+                    } else {
+                        link.textContent = prettyNumber;
+                    }
+                } else {
+                    link.textContent = prettyNumber;
+                }
+            });
+
+            const mobileBtn = document.querySelector('.protected-phone-btn');
+            if (mobileBtn) {
+                mobileBtn.href = 'tel:' + fullNumber;
+                mobileBtn.innerHTML = '<i class="fas fa-phone" style="margin-right: 8px;"></i> Réserver / ' + prettyNumber;
+            }
         });
     </script>
 
