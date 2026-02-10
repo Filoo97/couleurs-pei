@@ -12,11 +12,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Patua+One&display=swap"
         rel="stylesheet">
 
+    <!-- Content Security Policy (Basic) -->
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' 'unsafe-inline' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; img-src 'self' https: data:;">
+
     <!-- CSS -->
     <link rel="stylesheet" href="style.css?v=8">
 
-    <!-- Font Awesome pour les icônes -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Font Awesome (SRI pour plus de sécurité) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 
 <body>
@@ -306,6 +312,9 @@
                     4. Remplacer "VOTRE_LIEN_FORMSPREE_ICI" ci-dessous par cette URL.
                 -->
                 <form action="https://formspree.io/f/xdalknjg" method="POST">
+                    <!-- Champ Honeypot pour contrer les bots de spam -->
+                    <input type="text" name="_gotcha" style="display:none">
+
                     <div class="form-group">
                         <label for="nom">Nom & Prénom</label>
                         <input type="text" id="nom" name="nom" required placeholder="Votre nom complet">
