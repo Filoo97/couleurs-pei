@@ -203,6 +203,10 @@ header.scrolled .nav-links a {
     color: var(--primary-color);
 }
 
+.menu-close-btn {
+    display: none;
+}
+
 /* --- Mobile Menu --- */
 .hamburger {
     display: none;
@@ -253,12 +257,6 @@ header.scrolled .hamburger {
         /* Plus gros pour le tactile */
         padding: 20px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    /* Croix fermeture explicite dans le menu */
-    .menu-close-btn {
-        display: none;
-        /* Caché par défaut */
     }
 
     /* Fix: Hamburger blanc quand le menu est ouvert (sur fond bleu), même si scrollé */
