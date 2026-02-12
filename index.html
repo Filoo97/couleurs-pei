@@ -23,6 +23,78 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TSKRCJ4MJD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        // Par défaut, on peut rester en mode "denied" si on veut être très strict, 
+        // ou attendre le clic sur le bandeau.
+        gtag('config', 'G-TSKRCJ4MJD', { 'anonymize_ip': true });
+    </script>
+
+    <style>
+        /* Styles pour le bandeau de cookies */
+        #cookie-banner {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 500px;
+            background: #fff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 10000;
+            display: none;
+            flex-direction: column;
+            gap: 15px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        #cookie-banner.active {
+            display: flex;
+        }
+
+        #cookie-banner h4 {
+            margin: 0;
+            color: var(--secondary-color);
+        }
+
+        #cookie-banner p {
+            margin: 0;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .cookie-btns {
+            display: flex;
+            gap: 10px;
+        }
+
+        .cookie-btns .btn {
+            flex: 1;
+            padding: 10px;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+
+        .btn-accept {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+        }
+
+        .btn-refuse {
+            background-color: #eee;
+            color: #333;
+            border: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -569,6 +641,44 @@
                     }
                 }, 1000);
             }
+        });
+    </script>
+    <!-- Bandeau de Cookies -->
+    <div id="cookie-banner">
+        <h4>Votre vie privée nous importe 🥥</h4>
+        <p>Nous utilisons des cookies pour analyser l'audience de notre site et améliorer votre expérience.</p>
+        <div class="cookie-btns">
+            <button id="cookie-accept" class="btn btn-accept">Accepter tout</button>
+            <button id="cookie-refuse" class="btn btn-refuse">Continuer sans accepter</button>
+        </div>
+    </div>
+
+    <script>
+        // Gestion du bandeau de cookies
+        document.addEventListener('DOMContentLoaded', () => {
+            const banner = document.getElementById('cookie-banner');
+            const acceptBtn = document.getElementById('cookie-accept');
+            const refuseBtn = document.getElementById('cookie-refuse');
+
+            // Vérifier si le choix a déjà été fait
+            const cookieChoice = localStorage.getItem('cookie-choice');
+
+            if (!cookieChoice) {
+                banner.classList.add('active');
+            }
+
+            acceptBtn.addEventListener('click', () => {
+                localStorage.setItem('cookie-choice', 'accepted');
+                banner.classList.remove('active');
+                // Optionnel : on pourrait recharger ou déclencher GA ici si on l'avait bloqué
+            });
+
+            refuseBtn.addEventListener('click', () => {
+                localStorage.setItem('cookie-choice', 'refused');
+                banner.classList.remove('active');
+                // Désactiver GA dynamiquement si nécessaire
+                window['ga-disable-G-TSKRCJ4MJD'] = true;
+            });
         });
     </script>
 </body>
