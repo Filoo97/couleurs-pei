@@ -165,7 +165,8 @@
 
                 <p style="margin-bottom: 20px;">
                     Ma cuisine est un hommage à cette authenticité. Pas de superflu. Je m'inspire des grands noms comme
-                    <strong>Christian Antou</strong> pour respecter la tradition à la lettre. Le \"goût péï\" ne s'invente
+                    <strong>Christian Antou</strong> pour respecter la tradition à la lettre. Le \"goût péï\" ne
+                    s'invente
                     pas, il
                     se transporte : mes <strong>feuilles de 4 épices</strong> viennent du jardin de mes parents, ma
                     <strong>vanille givrée</strong> arrive de Bras-Panon et mon <strong>curcuma</strong> de la Plaine
@@ -713,22 +714,22 @@
 
                     if (honeypot !== "") {
                         e.preventDefault();
-                        console.log(\"Bot detected via honeypot.\");
+                        console.log("Bot detected via honeypot.");
                         return;
                     }
 
                     if (userAnswer !== correctAnswer) {
                         e.preventDefault();
-                        formMessage.textContent = \"❌ Mauvaise réponse au calcul. Veuillez réessayer.\";
-                        formMessage.style.color = \"red\";
-                        formMessage.style.display = \"block\";
-                        captchaAnswer.style.borderColor = \"red\";
+                        formMessage.textContent = "❌ Mauvaise réponse au calcul. Veuillez réessayer.";
+                        formMessage.style.color = "red";
+                        formMessage.style.display = "block";
+                        captchaAnswer.style.borderColor = "red";
                     } else {
                         submitBtn.disabled = true;
-                        submitBtn.textContent = \"Envoi en cours...\";
-                        formMessage.textContent = \"✅ Envoi en cours...\";
-                        formMessage.style.color = \"green\";
-                        formMessage.style.display = \"block\";
+                        submitBtn.textContent = "Envoi en cours...";
+                        formMessage.textContent = "✅ Envoi en cours...";
+                        formMessage.style.color = "green";
+                        formMessage.style.display = "block";
                     }
                 });
             }
