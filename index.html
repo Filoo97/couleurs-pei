@@ -388,9 +388,12 @@
                     3. Copier l'URL qu'ils vous donnent (ex: https://formspree.io/f/xzy...)
                     4. Remplacer "VOTRE_LIEN_FORMSPREE_ICI" ci-dessous par cette URL.
                 -->
-                <form action="https://formspree.io/f/xdalknjg" method="POST">
-                    <!-- Champ Honeypot pour contrer les bots de spam -->
-                    <input type="text" name="_gotcha" style="display:none">
+                <form action="https://formspree.io/f/xdalknjg" method="POST" id="contact-form">
+                    <!-- Protection Honeypot améliorée -->
+                    <div style="display:none;">
+                        <label>Si vous êtes un humain, laissez ce champ vide :</label>
+                        <input type="text" name="b_website_url" tabindex="-1" value="">
+                    </div>
 
                     <div class="form-group">
                         <label for="nom">Nom & Prénom</label>
@@ -426,7 +429,17 @@
                             placeholder="Bonjour, je souhaiterais réserver pour 10 personnes le..."></textarea>
                     </div>
 
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Envoyer ma demande</button>
+                    <div class="form-group">
+                        <label for="captcha">Vérification : Combien font <span id="captcha-question">...</span>
+                            ?</label>
+                        <input type="number" id="captcha-answer" name="captcha_answer" required
+                            placeholder="Votre réponse">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" id="submit-btn" style="width: 100%;">Envoyer ma
+                        demande</button>
+                    <p id="form-message" style="display:none; text-align:center; margin-top:10px; font-weight:bold;">
+                    </p>
                     <p style="font-size: 0.8rem; margin-top: 10px; color: #888; text-align: center;">* Réponse sous 24h.
                     </p>
                 </form>
@@ -670,15 +683,55 @@
             acceptBtn.addEventListener('click', () => {
                 localStorage.setItem('cookie-choice', 'accepted');
                 banner.classList.remove('active');
-                // Optionnel : on pourrait recharger ou déclencher GA ici si on l'avait bloqué
             });
 
             refuseBtn.addEventListener('click', () => {
                 localStorage.setItem('cookie-choice', 'refused');
                 banner.classList.remove('active');
-                // Désactiver GA dynamiquement si nécessaire
                 window['ga-disable-G-TSKRCJ4MJD'] = true;
             });
+
+            // --- PROTECTION ANTI-SPAM (Captcha Local) ---
+            const captchaQuestion = document.getElementById('captcha-question');
+            const captchaAnswer = document.getElementById('captcha-answer');
+            const contactForm = document.getElementById('contact-form');
+            const submitBtn = document.getElementById('submit-btn');
+            const formMessage = document.getElementById('form-message');
+
+            const num1 = Math.floor(Math.random() * 10) + 1;
+            const num2 = Math.floor(Math.random() * 10) + 1;
+            const correctAnswer = num1 + num2;
+
+            if (captchaQuestion) {
+                captchaQuestion.textContent = `${num1} + ${num2}`;
+            }
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    const userAnswer = parseInt(captchaAnswer.value);
+                    const honeypot = contactForm.querySelector('input[name="b_website_url"]').value;
+
+                    if (honeypot !== "") {
+                        e.preventDefault();
+                        console.log("Bot detected via honeypot.");
+                        return;
+                    }
+
+                    if (userAnswer !== correctAnswer) {
+                        e.preventDefault();
+                        formMessage.textContent = "❌ Mauvaise réponse au calcul. Veuillez réessayer.";
+                        formMessage.style.color = "red";
+                        formMessage.style.display = "block";
+                        captchaAnswer.style.borderColor = "red";
+                    } else {
+                        submitBtn.disabled = true;
+                        submitBtn.textContent = "Envoi en cours...";
+                        formMessage.textContent = "✅ Envoi en cours...";
+                        formMessage.style.color = "green";
+                        formMessage.style.display = "block";
+                    }
+                });
+            }
         });
     </script>
 </body>
