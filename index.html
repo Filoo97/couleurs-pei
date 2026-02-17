@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="E-O3JRl8eBusSnO5GRvFxXpc6CbzwCRDzo-A5O5LBLM" />
+    <title>Couleurs Péï - Food Truck Réunionnais</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Patua+One&display=swap"
+        rel="stylesheet">
+
+    <!-- Content Security Policy (Basic) -->
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' 'unsafe-inline' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; img-src 'self' https: data:;">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css?v=8">
+
+    <!-- Font Awesome (SRI pour plus de sécurité) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TSKRCJ4MJD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        // Par défaut, on peut rester en mode "denied" si on veut être très strict, 
+        // ou attendre le clic sur le bandeau.
+        gtag('config', 'G-TSKRCJ4MJD', { 'anonymize_ip': true });
+    </script>
+
+    <style>
+        /* Styles pour le bandeau de cookies */
+        #cookie-banner {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 500px;
+            background: #fff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 10000;
+            display: none;
+            flex-direction: column;
+            gap: 15px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        #cookie-banner.active {
+            display: flex;
+        }
+
+        #cookie-banner h4 {
+            margin: 0;
+            color: var(--secondary-color);
+        }
+
+        #cookie-banner p {
+            margin: 0;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .cookie-btns {
+            display: flex;
+            gap: 10px;
+        }
+
+        .cookie-btns .btn {
+            flex: 1;
+            padding: 10px;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+
+        .btn-accept {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+        }
+
+        .btn-refuse {
+            background-color: #eee;
+            color: #333;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header / Navigation -->
+    <header>
+        <div class="container navbar">
+            <a href="#" class="logo">
+                <img src="logo.png" alt="Couleurs Péï" class="logo-img">
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <!-- Croix de fermeture (Mobile uniquement) -->
+                    <li class="menu-close-btn">
+                        <i class="fas fa-times"></i>
+                    </li>
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#concept">Le Concept</a></li>
+                    <li><a href="#carte">La Carte</a></li>
+                    <li><a href="#planning">Planning</a></li>
+                    <li><a href="#" class="protected-phone" style="font-weight: 700; color: var(--primary-color);"><i
+                                class="fas fa-phone-alt"></i> <span>...</span></a></li>
+                    <li><a href="#reservation" class="btn btn-primary">Privatisez-moi</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="hero">
+        <div class="hero-background"></div>
+        <div class="container hero-content">
+            <h1>Votre Traiteur & Food-Truck aux saveurs de la Réunion</h1>
+            <p>Une cuisine authentique, épicée et généreuse pour vos événements et vos pauses gourmandes.</p>
+            <a href="#carte" class="btn btn-primary">Voir la Carte</a>
+            <a href="#planning" class="btn btn-secondary" style="margin-left: 10px; border: 1px solid white;">Nous
+                Trouver</a>
+        </div>
+    </section>
+
+    <!-- Mobile Sticky Button -->
+    <div class="mobile-sticky-btn-container">
+        <a href="#" class="mobile-sticky-btn protected-phone-btn">
+            <i class="fas fa-calendar-check" style="margin-right: 8px;"></i> Réserver / Appeler
+        </a>
+    </div>
+
+    <!-- Section Concept -->
+    <section id="concept" class="section-padding">
+        <div class="container reveal">
+            <h2>L'Esprit <span>Péï</span></h2>
+            <div style="text-align: center; max-width: 800px; margin: 0 auto; line-height: 1.8;">
+                <p style="margin-bottom: 20px; font-size: 1.1rem;">
+                    <strong>"La cuisine ne s'apprend pas, elle se vit."</strong><br>
+                    Je suis né et j'ai grandi à la Réunion. Pendant 29 ans, j'ai baigné dans ces odeurs, ces couleurs et
+                    cette
+                    ambiance unique. Pourtant, la cuisine n'était pas ma vocation première. C'est ici, en métropole,
+                    poussé par
+                    ma femme, que je suis passé derrière les fourneaux. Et là, surprise : les gestes de ma mère, ces
+                    moments
+                    passés à l'aider à préparer les repas, tout est revenu. J'ai réalisé que la culture culinaire
+                    réunionnaise
+                    était ancrée en moi.
+                </p>
+
+                <p style="margin-bottom: 20px;">
+                    Ma cuisine est un hommage à cette authenticité. Pas de superflu. Je m'inspire des grands noms comme
+                    <strong>Christian Antou</strong> pour respecter la tradition à la lettre. Le "goût péï" ne
+                    s'invente
+                    pas, il
+                    se transporte : mes <strong>feuilles de 4 épices</strong> viennent du jardin de mes parents, ma
+                    <strong>vanille givrée</strong> arrive de Bras-Panon et mon <strong>curcuma</strong> de la Plaine
+                    des
+                    Grègues. Tout est fait maison (sauf nos authentiques samoussas qui font le voyage depuis l'île) pour
+                    vous
+                    offrir la vraie Réunion dans l'assiette.
+                </p>
+
+                <p style="color: var(--secondary-color); font-weight: 600;">
+                    Pourquoi le Food Truck ? Pour la liberté d'aller vers vous. C'est une approche moderne qui me permet
+                    de
+                    partager cet héritage avec le plus grand nombre, tout en gardant ce côté "rare" et précieux.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section La Carte -->
+    <section id="carte" class="section-padding" style="background-color: #fff;">
+        <div class="container">
+            <div class="section-title reveal" style="text-align: center; margin-bottom: 50px;">
+                <h2>Notre <span>Carte</span></h2>
+                <p>Nos plats sont servis avec du riz jasmin parfumé et des grains (lentilles, haricots rouges ou pois du
+                    cap selon le jour).</p>
+            </div>
+
+            <!-- Filtres -->
+            <div class="menu-filters reveal">
+                <button class="filter-btn active" data-filter="all">Tout</button>
+                <button class="filter-btn" data-filter="apero">Apéritifs</button>
+                <button class="filter-btn" data-filter="plat">Plats</button>
+                <button class="filter-btn" data-filter="dessert">Desserts</button>
+            </div>
+
+            <div class="menu-grid">
+                <!-- APÉRITIFS -->
+                <div class="menu-item reveal" data-category="apero">
+                    <div class="menu-img-container">
+                        <img src="samoussa.png" alt="Samoussas">
+                        <span class="badge">Incontournable</span>
+                    </div>
+                    <div class="menu-content">
+                        <h3>Samoussas</h3>
+                        <p>Nos fameux triangles croustillants maison. Disponibles au Poulet, Porc, Fromage ou Légumes
+                            selon l'humeur du chef !</p>
+                    </div>
+                </div>
+
+                <div class="menu-item reveal" data-category="apero">
+                    <div class="menu-img-container">
+                        <img src="bouchons.png" alt="Bouchons">
+                        <span class="badge">Fait Maison</span>
+                    </div>
+                    <div class="menu-content">
+                        <h3>Bouchons</h3>
+                        <p>Bouchées vapeur gourmandes (Poulet ou Porc) relevées au combava. Le cousin réunionnais du Dim
+                            Sum.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item reveal" data-category="apero">
+                    <div class="menu-img-container">
+                        <img src="bonbon-piment.png" alt="Bonbons Piments">
+                        <span class="badge">Épicé</span>
+                    </div>
+                    <div class="menu-content">
+                        <h3>Bonbons Piments</h3>
+                        <p>Beignets croustillants et moelleux à base de pois du cap, curcuma, épices et piment frais. Ça
+                            réveille !</p>
+                    </div>
+                </div>
+
+                <!-- PLATS -->
+                <div class="menu-item reveal" data-category="plat">
+                    <div class="menu-img-container">
+                        <img src="rougail-saucisse.png" alt="Rougail Saucisse">
+                        <span class="badge">Toujours là</span>
+                    </div>
+                    <div class="menu-content">
+                        <h3>Rougail Saucisse</h3>
+                        <p>L'emblème de la Réunion. Saucisses fumées mijotées dans une sauce tomate aux épices et
+                            combava.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item reveal" data-category="plat">
+                    <div class="menu-img-container">
+                        <img src="cari-poulet.png" alt="Cari Poulet">
+                        <span class="badge">Toujours là</span>
+                    </div>
+                    <div class="menu-content">
+                        <h3>Cari Poulet</h3>
+                        <p>Poulet fermier cuisiné à la créole avec curcuma, gingembre et thym. Un classique
+                            réconfortant.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item highlight reveal" data-category="plat">
+                    <div class="menu-img-container">
+                        <img src="plat-du-jour.png" alt="Plat du jour">
+                        <span class="badge new">Suggestion</span>
+                    </div>
+                    <div class="menu-content">
+                        <h3>Plat du Jour</h3>
+                        <p class="date-info">Le chef vous surprend !</p>
+                        <p>Chaque semaine, une nouvelle découverte. Appelez-moi directement pour connaître la suggestion
+                            du
+                            moment.</p>
+                        <a href="#" class="protected-phone"
+                            style="font-weight: 700; color: var(--primary-color); display: inline-block; margin-top: 10px;">
+                            <i class="fas fa-phone-alt"></i> Demander le plat
+                        </a>
+                    </div>
+                </div>
+
+                <!-- DESSERTS -->
+                <div class="menu-item reveal" data-category="dessert">
+                    <div class="menu-img-container">
+                        <img src="gateau-patate.png" alt="Gâteau Patate">
+                        <span class="badge">Douceur</span>
+                    </div>
+                    <div class="menu-content">
+                        <h3>Gâteau Patate</h3>
+                        <p>Gâteau traditionnel à la patate douce et vanille de la Réunion. Une texture crémeuse unique.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="menu-item reveal" data-category="dessert">
+                    <div class="menu-img-container">
+                        <img src="flan-coco.jpg" alt="Flan Coco">
+                        <span class="badge">Best Seller</span>
+                    </div>
+                    <div class="menu-content">
+                        <h3>Flan Coco</h3>
+                        <p>Flan onctueux avec de la noix de coco fraîche et une texture crémeuse. Les clients l'adorent
+                            !</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px; font-style: italic; color: #666;">
+                <p>* Tous nos plats sont faits maison avec des produits frais.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Emplacements (Planning) -->
+    <section id="planning" class="section-padding" style="background-color: #f4f4f4;">
+        <div class="container">
+            <div class="section-title reveal" style="text-align: center;">
+                <h2>Nos <span>Emplacements</span></h2>
+                <p>Retrouvez-nous chaque semaine aux endroits suivants (Midi 11h30 - 14h00 / Soir 18h30 - 21h00)</p>
+            </div>
+
+            <div class="location-list">
+                <!-- Mardi Soir -->
+                <div class="location-card reveal">
+                    <h3>Mardi Soir</h3>
+                    <p class="date-info">18h00 - 21h00</p>
+                    <p><strong>YERRES</strong><br>Avenue de la Grange<br>(Angle rue Gustave Flaubert)</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=48.720292,2.497228" target="_blank"
+                        class="btn-map"><i class="fas fa-map-marker-alt"></i> Itinéraire</a>
+                </div>
+
+                <!-- Mercredi Midi -->
+                <div class="location-card reveal">
+                    <h3>Mercredi Midi</h3>
+                    <p class="date-info">11h45 - 14h00</p>
+                    <p><strong>YERRES</strong><br>Parvis du CEC</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=CEC+Yerres" target="_blank"
+                        class="btn-map"><i class="fas fa-map-marker-alt"></i> Itinéraire</a>
+                </div>
+
+                <!-- Mercredi Soir -->
+                <div class="location-card reveal">
+                    <h3>Mercredi Soir</h3>
+                    <p class="date-info">18h00 - 21h00</p>
+                    <p><strong>BRUNOY</strong><br>Parvis de la Gare</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Gare+de+Brunoy" target="_blank"
+                        class="btn-map"><i class="fas fa-map-marker-alt"></i> Itinéraire</a>
+                </div>
+
+                <!-- Jeudi (Variable) -->
+                <div class="location-card reveal" style="border-left-color: #888;">
+                    <h3>Jeudi</h3>
+                    <p class="date-info">Midi & Soir</p>
+                    <p><strong>EMPLACEMENT VARIABLE</strong><br>Appelez-moi pour savoir où je me trouve ce jeudi !</p>
+                    <a href="#" class="btn-map protected-phone" style="background-color: var(--secondary-color);"><i
+                            class="fas fa-phone-alt"></i> Appeler</a>
+                </div>
+
+                <!-- Vendredi Midi -->
+                <div class="location-card reveal">
+                    <h3>Vendredi Midi</h3>
+                    <p class="date-info">11h45 - 14h00</p>
+                    <p><strong>VAL D'YERRES</strong><br>Hôpital Privé</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Hopital+Prive+du+Val+d+Yerres"
+                        target="_blank" class="btn-map"><i class="fas fa-map-marker-alt"></i> Itinéraire</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Réservation & Contact -->
+    <section id="reservation" class="section-padding">
+        <div class="container">
+            <div class="section-title reveal" style="text-align: center; margin-bottom: 40px;">
+                <h2>Privatisez-moi / <span>Contact</span></h2>
+                <p>Envie de réserver pour un événement ou de commander ? Remplissez ce formulaire.</p>
+            </div>
+
+            <div class="contact-form-container reveal">
+                <!-- 
+                    IMPORTANT POUR LE CLIENT :
+                    Pour que ce formulaire fonctionne, vous devez :
+                    1. Aller sur https://formspree.io/ (c'est gratuit).
+                    2. Créer un "New Form" et entrer votre email pour recevoir les messages.
+                    3. Copier l'URL qu'ils vous donnent (ex: https://formspree.io/f/xzy...)
+                    4. Remplacer "VOTRE_LIEN_FORMSPREE_ICI" ci-dessous par cette URL.
+                -->
+                <form action="https://formspree.io/f/xdalknjg" method="POST" id="contact-form">
+                    <!-- Protection Honeypot améliorée -->
+                    <div style="display:none;">
+                        <label>Si vous êtes un humain, laissez ce champ vide :</label>
+                        <input type="text" name="b_website_url" tabindex="-1" value="">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nom">Nom & Prénom</label>
+                        <input type="text" id="nom" name="nom" required placeholder="Votre nom complet">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="votre@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tel">Téléphone</label>
+                        <input type="tel" id="tel" name="tel" required placeholder="0692...">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="type">Type d'événement</label>
+                        <select id="type" name="type">
+                            <option value="simple">Simple Repas / Commande</option>
+                            <option value="anniversaire">Anniversaire</option>
+                            <option value="bapteme">Baptême</option>
+                            <option value="famille">Repas de famille</option>
+                            <option value="mariage">Lendemain de mariage</option>
+                            <option value="pro">Événement professionnel</option>
+                            <option value="autre">Autre</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message / Détails (Date, Lieu, nbre personnes...)</label>
+                        <textarea id="message" name="message" rows="5"
+                            placeholder="Bonjour, je souhaiterais réserver pour 10 personnes le..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="captcha">Vérification : Combien font <span id="captcha-question">...</span>
+                            ?</label>
+                        <input type="number" id="captcha-answer" name="captcha_answer" required
+                            placeholder="Votre réponse">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" id="submit-btn" style="width: 100%;">Envoyer ma
+                        demande</button>
+                    <p id="form-message" style="display:none; text-align:center; margin-top:10px; font-weight:bold;">
+                    </p>
+                    <p style="font-size: 0.8rem; margin-top: 10px; color: #888; text-align: center;">* Réponse sous 24h.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- Section Avis Google (Widget Elfsight) -->
+    <section id="avis" class="section-padding" style="background-color: #f9f9f9;">
+        <div class="container">
+            <div class="section-title reveal" style="text-align: center; margin-bottom: 40px;">
+                <h2>Vos Mots <span>Doux</span></h2>
+                <p>Ce sont nos clients qui en parlent le mieux !</p>
+            </div>
+
+            <!-- Elfsight Google Reviews | Untitled Google Reviews -->
+            <script src="https://elfsightcdn.com/platform.js" async></script>
+            <div class="elfsight-app-311d522c-8512-4db9-a026-dd2e2049a0cb" data-elfsight-app-lazy></div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <!-- Colonne 1 : Marque -->
+                <div class="footer-col">
+                    <img src="logo.png" alt="Couleurs Péï" style="height: 60px; margin-bottom: 20px;">
+                    <p>L'authenticité de la cuisine réunionnaise, itinérante et passionnée. Fait maison avec amour et
+                        épices.</p>
+                    <div class="footer-socials">
+                        <a href="https://instagram.com/couleurspei" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+
+                <!-- Colonne 2 : Contact -->
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-phone-alt"></i> <a href="#" class="protected-phone"
+                            style="text-decoration:none; color: inherit;">...</a></p>
+                    <p><i class="fas fa-envelope"></i> contact@couleurspei.fr</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Yerres / Brunoy / Val d'Yerres</p>
+                </div>
+
+                <!-- Colonne 3 : Horaires -->
+                <div class="footer-col">
+                    <h3>Horaires</h3>
+                    <p><strong>Mardi - Samedi :</strong></p>
+                    <p>Midi : 11h30 - 14h00</p>
+                    <p>Soir : 18h30 - 21h00</p>
+                    <p><strong>Dimanche :</strong> Fermé (Sauf événement)</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Couleurs Péï - Food Truck Réunionnais | Site réalisé avec passion.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script pour l'animation du Header au scroll et Reveal -->
+    <script>
+        // Sélection du header
+        const header = document.querySelector('header');
+
+        // Écoute de l'événement de scroll
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Gestion du Menu Mobile
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        // Toggle via Hamburger
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = hamburger.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                // On cache l'icone hamburger quand le menu est ouvert car on a la croix dedans
+                // ou on la laisse en croix, au choix. Ici on la laisse transformer.
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Fermeture via Croix dédiée (Nouveau)
+        const closeBtn = document.querySelector('.menu-close-btn');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                // Reset icone hamburger
+                const icon = hamburger.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        }
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.querySelector('i').classList.remove('fa-times');
+                hamburger.querySelector('i').classList.add('fa-bars');
+            });
+        });
+
+        // Animation d'apparition au scroll (Intersection Observer)
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // On arrête d'observer une fois apparu (pour ne pas rejouer l'animation)
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.15 // Déclenche quand 15% de l'élément est visible
+        });
+
+        revealElements.forEach(el => {
+            revealObserver.observe(el);
+        });
+
+        // --- Filtrage du Menu ---
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const menuItems = document.querySelectorAll('.menu-item[data-category]');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Gestion de la classe active
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                menuItems.forEach(item => {
+                    const itemCategory = item.getAttribute('data-category');
+
+                    if (filterValue === 'all' || filterValue === itemCategory) {
+                        item.style.display = 'block';
+                        // Re-déclencher l'animation
+                        item.style.animation = 'none';
+                        item.offsetHeight; /* trigger reflow */
+                        item.style.animation = 'fadeIn 0.5s ease forwards';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // --- PROTECTION CONTRE LE SCRAPING (Numéro de Téléphone) ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const p1 = '06';
+            const p2 = '50';
+            const p3 = '84';
+            const p4 = '42';
+            const p5 = '47';
+
+            const fullNumber = p1 + p2 + p3 + p4 + p5;
+            const prettyNumber = p1 + ' ' + p2 + ' ' + p3 + ' ' + p4 + ' ' + p5;
+
+            const phoneLinks = document.querySelectorAll('.protected-phone');
+
+            phoneLinks.forEach(link => {
+                if (link.tagName === 'A') {
+                    link.href = 'tel:' + fullNumber;
+                    const span = link.querySelector('span');
+                    if (span) {
+                        span.textContent = prettyNumber;
+                    } else {
+                        link.textContent = prettyNumber;
+                    }
+                } else {
+                    link.textContent = prettyNumber;
+                }
+            });
+
+            const mobileBtn = document.querySelector('.protected-phone-btn');
+            if (mobileBtn) {
+                mobileBtn.href = 'tel:' + fullNumber;
+                mobileBtn.innerHTML = '<i class="fas fa-phone" style="margin-right: 8px;"></i> Réserver / ' + prettyNumber;
+            }
+        });
+    </script>
+
+    <!-- Google Merchant Widget -->
+    <script src="https://www.gstatic.com/shopping/merchant/merchantwidget.js" defer></script>
+    <script>
+        window.addEventListener('load', function () {
+            if (typeof merchantwidget !== 'undefined') {
+                merchantwidget.start({
+                    merchant_id: 5667867264,
+                    position: 'BOTTOM_RIGHT'
+                });
+            } else {
+                setTimeout(function () {
+                    if (typeof merchantwidget !== 'undefined') {
+                        merchantwidget.start({
+                            merchant_id: 5667867264,
+                            position: 'BOTTOM_RIGHT'
+                        });
+                    }
+                }, 1000);
+            }
+        });
+    </script>
+    <!-- Bandeau de Cookies -->
+    <div id="cookie-banner">
+        <h4>Votre vie privée nous importe 🥥</h4>
+        <p>Nous utilisons des cookies pour analyser l'audience de notre site et améliorer votre expérience.</p>
+        <div class="cookie-btns">
+            <button id="cookie-accept" class="btn btn-accept">Accepter tout</button>
+            <button id="cookie-refuse" class="btn btn-refuse">Continuer sans accepter</button>
+        </div>
+    </div>
+
+    <script>
+        // Gestion du bandeau de cookies
+        document.addEventListener('DOMContentLoaded', () => {
+            const banner = document.getElementById('cookie-banner');
+            const acceptBtn = document.getElementById('cookie-accept');
+            const refuseBtn = document.getElementById('cookie-refuse');
+
+            // Vérifier si le choix a déjà été fait
+            const cookieChoice = localStorage.getItem('cookie-choice');
+
+            if (!cookieChoice) {
+                banner.classList.add('active');
+            }
+
+            acceptBtn.addEventListener('click', () => {
+                localStorage.setItem('cookie-choice', 'accepted');
+                banner.classList.remove('active');
+            });
+
+            refuseBtn.addEventListener('click', () => {
+                localStorage.setItem('cookie-choice', 'refused');
+                banner.classList.remove('active');
+                window['ga-disable-G-TSKRCJ4MJD'] = true;
+            });
+
+            // --- PROTECTION ANTI-SPAM (Captcha Local) ---
+            const captchaQuestion = document.getElementById('captcha-question');
+            const captchaAnswer = document.getElementById('captcha-answer');
+            const contactForm = document.getElementById('contact-form');
+            const submitBtn = document.getElementById('submit-btn');
+            const formMessage = document.getElementById('form-message');
+
+            const num1 = Math.floor(Math.random() * 10) + 1;
+            const num2 = Math.floor(Math.random() * 10) + 1;
+            const correctAnswer = num1 + num2;
+
+            if (captchaQuestion) {
+                captchaQuestion.textContent = `${num1} + ${num2}`;
+            }
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    const userAnswer = parseInt(captchaAnswer.value);
+                    const honeypot = contactForm.querySelector('input[name="b_website_url"]').value;
+
+                    if (honeypot !== "") {
+                        e.preventDefault();
+                        console.log("Bot detected via honeypot.");
+                        return;
+                    }
+
+                    if (userAnswer !== correctAnswer) {
+                        e.preventDefault();
+                        formMessage.textContent = "❌ Mauvaise réponse au calcul. Veuillez réessayer.";
+                        formMessage.style.color = "red";
+                        formMessage.style.display = "block";
+                        captchaAnswer.style.borderColor = "red";
+                    } else {
+                        submitBtn.disabled = true;
+                        submitBtn.textContent = "Envoi en cours...";
+                        formMessage.textContent = "✅ Envoi en cours...";
+                        formMessage.style.color = "green";
+                        formMessage.style.display = "block";
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

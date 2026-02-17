@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Post Template - Modern</title>
+    <link rel="stylesheet" href="../../Site Couleurs Péï/style.css">
+    <style>
+        /* Default (Post) */
+        body {
+            margin: 0;
+            padding: 0;
+            width: 1080px;
+            height: 1080px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--secondary-color);
+            overflow: hidden;
+            font-family: 'Montserrat', sans-serif;
+            position: relative;
+        }
+
+        body.format-story {
+            height: 1920px;
+        }
+
+        .post-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            background: url('PHONE_IMAGE_URL');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Elegant Theme (CSS Only) */
+        body.theme-elegant {
+            background: radial-gradient(circle at top right, #3a4b6b, #1a2a41);
+        }
+
+        body.theme-elegant .post-container {
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Dark Overlay */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom,
+                    rgba(44, 58, 81, 0.1) 0%,
+                    rgba(44, 58, 81, 0.6) 100%);
+            z-index: 1;
+        }
+
+        body.theme-elegant .overlay {
+            background: linear-gradient(135deg, rgba(186, 150, 105, 0.05) 0%, rgba(0, 0, 0, 0) 100%);
+        }
+
+        /* Glassmorphism Card */
+        .glass-card {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 950px;
+            background: rgba(44, 58, 81, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(186, 150, 105, 0.7);
+            border-radius: 40px;
+            padding: 50px;
+            z-index: 2;
+            text-align: center;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.5);
+        }
+
+        body.format-story .glass-card {
+            bottom: 200px;
+            width: 980px;
+            padding: 60px;
+        }
+
+        .logo-container {
+            position: absolute;
+            top: 50px;
+            right: 50px;
+            z-index: 3;
+            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
+        }
+
+        body.format-story .logo-container {
+            top: 100px;
+        }
+
+        .logo-img {
+            height: 140px;
+        }
+
+        body.format-story .logo-img {
+            height: 160px;
+        }
+
+        .badge-new {
+            position: absolute;
+            top: 60px;
+            left: 60px;
+            background: var(--primary-color);
+            color: #fff;
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-family: 'Patua One', serif;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+            z-index: 3;
+        }
+
+        .title {
+            font-family: 'Patua One', serif;
+            font-size: 4.5rem;
+            color: var(--primary-color);
+            margin: 0 0 25px 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        body.format-story .title {
+            font-size: 5rem;
+        }
+
+        .subtitle {
+            font-size: 2.2rem;
+            color: #fff;
+            font-weight: 500;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        body.format-story .subtitle {
+            font-size: 2.5rem;
+        }
+
+        .frame {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            right: 30px;
+            bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            z-index: 2;
+            pointer-events: none;
+            border-radius: 20px;
+        }
+
+        /* Abstract Shapes for Elegant Theme */
+        .shape {
+            display: none;
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: 0;
+            opacity: 0.4;
+        }
+
+        body.theme-elegant .shape {
+            display: block;
+        }
+
+        .shape-1 {
+            width: 600px;
+            height: 600px;
+            background: var(--primary-color);
+            top: -200px;
+            right: -200px;
+        }
+
+        .shape-2 {
+            width: 400px;
+            height: 400px;
+            background: #4a5b7b;
+            bottom: -100px;
+            left: -100px;
+        }
+    </style>
+</head>
+
+<body class="REPLACE_THEME">
+    <div class="post-container">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+
+        <div class="overlay"></div>
+        <div class="frame"></div>
+
+        <div class="badge-new" style="display: none;" id="badge">NOUVEAU</div>
+
+        <div class="logo-container">
+            <img src="../../Site Couleurs Péï/logo.png" alt="Logo" class="logo-img">
+        </div>
+
+        <div class="glass-card">
+            <h1 class="title">REPLACE_TITLE</h1>
+            <div class="subtitle">REPLACE_SUBTITLE</div>
+        </div>
+    </div>
+</body>
+
+</html>
