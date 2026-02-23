@@ -37,3 +37,4 @@ Pour que votre agent puisse publier automatiquement sur Instagram et Facebook, n
 ## Résumé des infos à me fournir :
 - **ACCESS_TOKEN** (Celui généré à l'étape 3)
 - **INSTAGRAM_ACCOUNT_ID** (Celui trouvé à l'étape 4)
+
