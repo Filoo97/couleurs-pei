@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story Preview - Couleurs Péï</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        /* Conteneur story (ratio 9:16) */
+        .story-container {
+            width: 360px;
+            aspect-ratio: 9 / 16;
+            background: linear-gradient(135deg, #d9c4aa 0%, #e5d4ba 100%);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        /* Titre */
+        .story-title {
+            text-align: center;
+            color: #2c3a51;
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Ligne décorative */
+        .divider {
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #ba9669, transparent);
+            margin-bottom: 30px;
+        }
+        
+        /* Contenu principal */
+        .story-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 25px;
+        }
+        
+        /* Item emplacement */
+        .location-item {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 5px solid #ba9669;
+            backdrop-filter: blur(10px);
+        }
+        
+        .location-item.accent-green {
+            border-left-color: #9ba948;
+        }
+        
+        .location-day {
+            font-size: 18px;
+            font-weight: 700;
+            color: #ba9669;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .location-item.accent-green .location-day {
+            color: #9ba948;
+        }
+        
+        .location-info {
+            font-size: 14px;
+            color: #2c3a51;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+        
+        /* Footer */
+        .story-footer {
+            text-align: center;
+            color: #2c3a51;
+            font-size: 13px;
+            font-weight: 600;
+            opacity: 0.8;
+            margin-top: 20px;
+        }
+        
+        /* Logo coin */
+        .story-logo {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            font-size: 11px;
+            color: #ba9669;
+            opacity: 0.6;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="story-container">
+        <div>
+            <h1 class="story-title">📍 Planning de la Semaine</h1>
+            <div class="divider"></div>
+        </div>
+        
+        <div class="story-content">
+            <div class="location-item">
+                <div class="location-day">Mardi Soir</div>
+                <div class="location-info">
+                    📍 Yerres<br>
+                    Avenue de la Grange<br>
+                    18h00 - 21h00
+                </div>
+            </div>
+            
+            <div class="location-item accent-green">
+                <div class="location-day">Mercredi Midi</div>
+                <div class="location-info">
+                    📍 Yerres<br>
+                    Parvis du CEC<br>
+                    11h45 - 14h00
+                </div>
+            </div>
+            
+            <div class="location-item">
+                <div class="location-day">Mercredi Soir</div>
+                <div class="location-info">
+                    📍 Brunoy<br>
+                    Parvis de la Gare<br>
+                    18h00 - 21h00
+                </div>
+            </div>
+            
+            <div class="location-item accent-green">
+                <div class="location-day">Vendredi Midi</div>
+                <div class="location-info">
+                    📍 Val d'Yerres<br>
+                    Hôpital Privé<br>
+                    11h45 - 14h00
+                </div>
+            </div>
+        </div>
+        
+        <div class="story-footer">
+            Couleurs Péï<br>
+            Cuisine Réunionnaise
+        </div>
+        
+        <div class="story-logo">CP</div>
+    </div>
+</body>
+</html>
