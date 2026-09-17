@@ -34,7 +34,7 @@ class PriorityWebsiteFixesTests(unittest.TestCase):
     def test_mobile_quick_actions_offer_planning_call_and_traiteur_paths(self):
         self.assertIn('class="quick-actions"', INDEX)
         self.assertIn('href="#planning"', INDEX)
-        self.assertIn('class="protected-phone quick-action"', INDEX)
+        self.assertIn('href="tel:0650844247" class="quick-action"', INDEX)
         self.assertIn('href="#reservation"', INDEX)
 
     def test_traiteur_section_uses_only_confirmed_event_types(self):

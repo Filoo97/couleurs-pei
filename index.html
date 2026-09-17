@@ -19,7 +19,7 @@
         content="default-src 'self' 'unsafe-inline' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; img-src 'self' https: data:;">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="style.css?v=8">
+    <link rel="stylesheet" href="style.css?v=9">
 
     <!-- Font Awesome (SRI pour plus de sécurité) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -144,7 +144,7 @@
     <!-- Accès rapides mobile -->
     <div class="quick-actions" aria-label="Accès rapides">
         <a class="quick-action" href="#planning"><i class="fas fa-map-marker-alt"></i><span>Planning</span></a>
-        <a href="#" class="protected-phone quick-action"><i class="fas fa-phone-alt"></i><span>Appeler</span></a>
+        <a href="tel:0650844247" class="quick-action"><i class="fas fa-phone-alt"></i><span>Appeler</span></a>
         <a class="quick-action" href="#reservation"><i class="fas fa-calendar-check"></i><span>Traiteur</span></a>
     </div>
 
@@ -554,6 +554,7 @@
 
     <!-- Script pour l'animation du Header au scroll et Reveal -->
     <script>
+        document.documentElement.classList.add('js');
         // Sélection du header
         const header = document.querySelector('header');
 
