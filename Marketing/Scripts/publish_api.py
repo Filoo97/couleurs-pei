@@ -5,10 +5,16 @@ import argparse
 import datetime
 import sys
 
-# --- CONFIGURATION (À sécuriser via .env en prod) ---
-ACCESS_TOKEN = "EAAKyJaZAL6QoBQjaPql3aLaJq1bBVl3ZCow5O3inlwF8PUZAcZCeVZAOZCo3tXffZCsGi7qp3peSrTESRuOJ0WKNZAqa2q3kMjo83hBq5HDyyoHUYW5rqeloaZAJFcXKV3qyTNMSI62EiLIwENpSApOAJyx4aiY0lYAqyIwHSuXOkLU6Jt540V9sQS2KI2GfoTW4gPYZBjPXrvZBwZDZD"
+# --- CONFIGURATION ---
 INSTAGRAM_ACCOUNT_ID = "17841429117751312"
 GRAPH_URL = "https://graph.facebook.com/v19.0"
+
+
+def get_access_token():
+    token = os.environ.get("META_INSTAGRAM_ACCESS_TOKEN")
+    if not token:
+        raise SystemExit("META_INSTAGRAM_ACCESS_TOKEN is required.")
+    return token
 
 def upload_temp_image(image_path):
     """
@@ -47,6 +53,8 @@ def publish_media(image_path, caption, is_story=False, schedule_time=None):
         print(f"❌ Image introuvable : {image_path}")
         return
 
+    access_token = get_access_token()
+
     # 1. Upload to Temporary Host
     image_url = upload_temp_image(image_path)
     if not image_url:
@@ -59,7 +67,7 @@ def publish_media(image_path, caption, is_story=False, schedule_time=None):
     payload = {
         'image_url': image_url,
         'caption': caption,
-        'access_token': ACCESS_TOKEN
+        'access_token': access_token
     }
     
     if is_story:
@@ -90,7 +98,7 @@ def publish_media(image_path, caption, is_story=False, schedule_time=None):
     url_publish = f"{GRAPH_URL}/{INSTAGRAM_ACCOUNT_ID}/media_publish"
     payload_pub = {
         'creation_id': container_id,
-        'access_token': ACCESS_TOKEN
+        'access_token': access_token
     }
     
     response_pub = requests.post(url_publish, data=payload_pub)
