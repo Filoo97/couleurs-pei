@@ -1,13 +1,21 @@
 
+import os
+
 import requests
 
-ACCESS_TOKEN = "EAAKyJaZAL6QoBQkba7C3UjNoR7QehIIyI6L7j9Sito3DIQHmNl0HGIG8De9jX4kk3UPWnowQIK8Tf5rQRwNg2fI08sLoHL2oGn91svFBt9sNTNaVLpduRRcjjl0RZCDfcCPGfNA5JmQZC60ZAASx4mLo3HpNu04KYBRZAb5BlQe17gg3Dv3gI62fSpjFjbZCDRnTfh64gZA3mR6UOdpLey7RwvsKcenGO0psWekHfpVemZA9HgZDZD"
+
+def get_access_token():
+    token = os.environ.get("META_USER_ACCESS_TOKEN")
+    if not token:
+        raise SystemExit("META_USER_ACCESS_TOKEN is required.")
+    return token
 
 def get_instagram_account_id():
     print("Test de la connexion API Meta...")
+    access_token = get_access_token()
     
     # 1. Get User's Pages
-    url = f"https://graph.facebook.com/v19.0/me/accounts?access_token={ACCESS_TOKEN}"
+    url = f"https://graph.facebook.com/v19.0/me/accounts?access_token={access_token}"
     response = requests.get(url)
     
     if response.status_code != 200:
@@ -27,7 +35,7 @@ def get_instagram_account_id():
         page_id = page['id']
         print(f"\n🔍 Analyse de la page : {page_name} ({page_id})")
         
-        url_ig = f"https://graph.facebook.com/v19.0/{page_id}?fields=instagram_business_account&access_token={ACCESS_TOKEN}"
+        url_ig = f"https://graph.facebook.com/v19.0/{page_id}?fields=instagram_business_account&access_token={access_token}"
         resp_ig = requests.get(url_ig)
         ig_data = resp_ig.json()
         
