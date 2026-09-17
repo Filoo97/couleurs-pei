@@ -100,6 +100,7 @@
 </head>
 
 <body>
+    <a class="skip-link" href="#main-content">Aller au contenu</a>
 
     <!-- Header / Navigation -->
     <header>
@@ -140,13 +141,14 @@
         </div>
     </section>
 
-    <!-- Mobile Sticky Button -->
-    <div class="mobile-sticky-btn-container">
-        <a href="#" class="mobile-sticky-btn protected-phone-btn">
-            <i class="fas fa-calendar-check" style="margin-right: 8px;"></i> Réserver / Appeler
-        </a>
+    <!-- Accès rapides mobile -->
+    <div class="quick-actions" aria-label="Accès rapides">
+        <a class="quick-action" href="#planning"><i class="fas fa-map-marker-alt"></i><span>Planning</span></a>
+        <a href="#" class="protected-phone quick-action"><i class="fas fa-phone-alt"></i><span>Appeler</span></a>
+        <a class="quick-action" href="#reservation"><i class="fas fa-calendar-check"></i><span>Traiteur</span></a>
     </div>
 
+    <main id="main-content">
     <!-- Section Concept -->
     <section id="concept" class="section-padding">
         <div class="container reveal">
@@ -208,7 +210,7 @@
                 <!-- APÉRITIFS -->
                 <div class="menu-item reveal" data-category="apero">
                     <div class="menu-img-container">
-                        <img src="samoussa.png" alt="Samoussas">
+                        <img src="samoussa.png" alt="Samoussas" loading="lazy">
                         <span class="badge">Incontournable</span>
                     </div>
                     <div class="menu-content">
@@ -382,7 +384,7 @@
             </div>
             <div class="logos-grid">
                 <div class="logo-item" title="CGSS de la Réunion">
-                    <img src="cgss-reunion.jpg" alt="CGSS de la Réunion">
+                    <img src="cgss-reunion.jpg" alt="CGSS de la Réunion" loading="lazy">
                 </div>
                 <div class="logo-item" title="Ville de Gagny">
                     <img src="fmark0000000004262698_001.jpg" alt="Ville de Gagny">
@@ -406,6 +408,20 @@
                     <img src="1006404.jpg" alt="Clinique de l'Yvette à Longjumeau">
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section id="traiteur" class="section-padding traiteur-section">
+        <div class="container">
+            <div class="section-title reveal">
+                <p class="eyebrow">Vos événements</p>
+                <h2>Le goût Péï <span>chez vous</span></h2>
+                <p>Une demande pour un repas de famille, un anniversaire, un baptême ou un événement professionnel ? Dites-nous simplement ce dont vous avez besoin.</p>
+            </div>
+            <div class="traiteur-types" aria-label="Types d'événements">
+                <span>Anniversaire</span><span>Baptême</span><span>Repas de famille</span><span>Événement professionnel</span>
+            </div>
+            <p class="traiteur-cta"><a class="btn btn-primary" href="#reservation">Faire une demande</a></p>
         </div>
     </section>
 
@@ -498,6 +514,7 @@
 
         </div>
     </section>
+    </main>
 
     <footer>
         <div class="container">

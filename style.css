@@ -907,3 +907,24 @@ footer {
 .review-card:nth-child(3) {
     transition-delay: 0.4s;
 }
+
+/* Refonte UX : accès immédiats, parcours traiteur et accessibilité */
+.skip-link { position: fixed; top: -80px; left: 16px; z-index: 10001; padding: 12px 16px; border-radius: 0 0 12px 12px; background: var(--secondary-color); color: #fff; font-weight: 700; }
+.skip-link:focus { top: 0; }
+.quick-actions { display: none; }
+.traiteur-section { background: var(--secondary-color); color: #fff; text-align: center; }
+.traiteur-section h2 { color: #fff; }
+.traiteur-section .section-title p { max-width: 680px; margin: 0 auto; }
+.eyebrow { color: var(--primary-color); font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.traiteur-types { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 28px 0; }
+.traiteur-types span { padding: 9px 14px; border: 1px solid rgba(255,255,255,.35); border-radius: 999px; font-weight: 600; }
+.traiteur-cta { margin-top: 30px; }
+@media (max-width: 768px) {
+    body { padding-bottom: 72px; }
+    .mobile-sticky-btn-container { display: none; }
+    .quick-actions { position: fixed; inset: auto 0 0; z-index: 990; display: grid; grid-template-columns: repeat(3, 1fr); background: var(--secondary-color); box-shadow: 0 -6px 20px rgba(0,0,0,.16); }
+    .quick-action { display: flex; min-height: 64px; flex-direction: column; align-items: center; justify-content: center; gap: 3px; color: #fff; font-size: .75rem; font-weight: 700; }
+    .quick-action + .quick-action { border-left: 1px solid rgba(255,255,255,.16); }
+    .quick-action i { color: var(--primary-color); font-size: 1.1rem; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }

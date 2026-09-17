@@ -31,6 +31,25 @@ class PriorityWebsiteFixesTests(unittest.TestCase):
             self.assertIsNone(re.search(r'ACCESS_TOKEN\s*=\s*["\']', source))
             self.assertIn("os.environ", source)
 
+    def test_mobile_quick_actions_offer_planning_call_and_traiteur_paths(self):
+        self.assertIn('class="quick-actions"', INDEX)
+        self.assertIn('href="#planning"', INDEX)
+        self.assertIn('class="protected-phone quick-action"', INDEX)
+        self.assertIn('href="#reservation"', INDEX)
+
+    def test_traiteur_section_uses_only_confirmed_event_types(self):
+        self.assertIn('id="traiteur"', INDEX)
+        for label in ("Anniversaire", "Baptême", "Repas de famille", "Événement professionnel"):
+            self.assertIn(label, INDEX)
+
+    def test_non_hero_images_are_lazy_loaded(self):
+        self.assertIn('src="samoussa.png" alt="Samoussas" loading="lazy"', INDEX)
+        self.assertIn('src="cgss-reunion.jpg" alt="CGSS de la Réunion" loading="lazy"', INDEX)
+
+    def test_primary_navigation_includes_a_skip_link(self):
+        self.assertIn('class="skip-link" href="#main-content"', INDEX)
+        self.assertIn('<main id="main-content">', INDEX)
+
 
 if __name__ == "__main__":
     unittest.main()
