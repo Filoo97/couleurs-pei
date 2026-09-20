@@ -53,11 +53,21 @@ class PriorityWebsiteFixesTests(unittest.TestCase):
 
     def test_homepage_offers_two_clear_primary_paths(self):
         hero = re.search(r'<section id="accueil".*?</section>', INDEX, re.DOTALL).group(0)
-        self.assertIn('class="hero-kicker"', hero)
+        self.assertNotIn('hero-kicker', hero)
+        self.assertIn('Food-truck &amp; traiteur réunionnais', hero)
+        self.assertIn('à Yerres, Brunoy et Val d’Yerres', hero)
+        self.assertIn('class="hero-title-line"', hero)
         self.assertIn('class="hero-actions"', hero)
         self.assertIn('href="#planning"', hero)
         self.assertIn('href="#traiteur"', hero)
         self.assertLess(INDEX.index('<main id="main-content">'), INDEX.index('<section id="accueil"'))
+
+    def test_hero_keeps_zoom_without_repeating_or_hard_split(self):
+        self.assertIn('animation: kenBurns', STYLE)
+        self.assertIn('background-repeat: no-repeat;', STYLE)
+        self.assertIn('background-size: cover;', STYLE)
+        self.assertIn('background-position: 50% center;', STYLE)
+        self.assertIn('font-size: 1.05rem;', STYLE)
 
     def test_location_schedule_is_a_semantic_list_with_confirmed_details(self):
         planning = re.search(r'<section id="planning".*?</section>', INDEX, re.DOTALL).group(0)
@@ -96,7 +106,7 @@ class PriorityWebsiteFixesTests(unittest.TestCase):
         self.assertIn("event.key === 'Escape'", INDEX)
 
     def test_css_version_is_incremented_for_the_redesign(self):
-        self.assertIn('href="style.css?v=10"', INDEX)
+        self.assertIn('href="style.css?v=11"', INDEX)
 
     def test_redesign_respects_brand_palette_and_reduced_motion(self):
         for color in ('#2c3a51', '#ba9669', '#cbd3e0', '#F9F9F9'):
