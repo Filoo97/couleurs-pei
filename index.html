@@ -19,7 +19,7 @@
         content="default-src 'self' 'unsafe-inline' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; img-src 'self' https: data:;">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="style.css?v=9">
+    <link rel="stylesheet" href="style.css?v=10">
 
     <!-- Font Awesome (SRI pour plus de sécurité) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -96,6 +96,31 @@
             color: #333;
             border: none;
         }
+
+        @media (max-width: 480px) {
+            #cookie-banner {
+                bottom: 12px;
+                width: calc(100% - 32px);
+                padding: 16px;
+                gap: 10px;
+            }
+
+            #cookie-banner h4 {
+                font-size: 0.95rem;
+            }
+
+            #cookie-banner p {
+                font-size: 0.82rem;
+                line-height: 1.3;
+            }
+
+            .cookie-btns .btn {
+                min-height: 44px;
+                padding: 8px;
+                font-size: 0.72rem;
+                line-height: 1.15;
+            }
+        }
     </style>
 </head>
 
@@ -105,14 +130,14 @@
     <!-- Header / Navigation -->
     <header>
         <div class="container navbar">
-            <a href="#" class="logo">
+            <a href="#accueil" class="logo" aria-label="Couleurs Péï — accueil">
                 <img src="logo.png" alt="Couleurs Péï" class="logo-img">
             </a>
-            <nav>
-                <ul class="nav-links">
+            <nav aria-label="Navigation principale">
+                <ul class="nav-links" id="primary-navigation">
                     <!-- Croix de fermeture (Mobile uniquement) -->
                     <li class="menu-close-btn">
-                        <i class="fas fa-times"></i>
+                        <button type="button" aria-label="Fermer le menu"><i class="fas fa-times" aria-hidden="true"></i></button>
                     </li>
                     <li><a href="#accueil">Accueil</a></li>
                     <li><a href="#concept">Le Concept</a></li>
@@ -122,22 +147,29 @@
                                 class="fas fa-phone-alt"></i> <span>...</span></a></li>
                     <li><a href="#reservation" class="btn btn-primary">Privatisez-moi</a></li>
                 </ul>
-                <div class="hamburger">
-                    <i class="fas fa-bars"></i>
-                </div>
+                <button class="hamburger" type="button" aria-controls="primary-navigation" aria-expanded="false"
+                    aria-label="Ouvrir le menu">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                </button>
             </nav>
         </div>
     </header>
 
+    <main id="main-content">
     <!-- Hero Section -->
     <section id="accueil" class="hero">
-        <div class="hero-background"></div>
+        <div class="hero-background" aria-hidden="true"></div>
         <div class="container hero-content">
+            <p class="hero-kicker">Cuisine réunionnaise faite maison</p>
             <h1>Votre Traiteur & Food-Truck Réunionnais à Yerres, Brunoy et Val d'Yerres</h1>
             <p>Une cuisine authentique, épicée et généreuse pour vos événements et vos pauses gourmandes.</p>
-            <a href="#carte" class="btn btn-primary">Voir la Carte</a>
-            <a href="#planning" class="btn btn-secondary" style="margin-left: 10px; border: 1px solid white;">Nous
-                Trouver</a>
+            <div class="hero-actions" aria-label="Choisir votre parcours">
+                <a href="#planning" class="btn btn-primary"><i class="fas fa-location-dot" aria-hidden="true"></i>
+                    Trouver le food-truck</a>
+                <a href="#traiteur" class="btn btn-secondary"><i class="fas fa-utensils" aria-hidden="true"></i>
+                    Préparer un événement</a>
+            </div>
+            <a class="hero-menu-link" href="#carte">Découvrir la carte <span aria-hidden="true">↓</span></a>
         </div>
     </section>
 
@@ -148,7 +180,6 @@
         <a class="quick-action" href="#reservation"><i class="fas fa-calendar-check"></i><span>Traiteur</span></a>
     </div>
 
-    <main id="main-content">
     <!-- Section Concept -->
     <section id="concept" class="section-padding">
         <div class="container reveal">
@@ -320,59 +351,60 @@
     </section>
 
     <!-- Section Emplacements (Planning) -->
-    <section id="planning" class="section-padding" style="background-color: #f4f4f4;">
+    <section id="planning" class="section-padding planning-section">
         <div class="container">
-            <div class="section-title reveal" style="text-align: center;">
+            <div class="section-title reveal">
+                <p class="eyebrow">Le food-truck près de chez vous</p>
                 <h2>Nos <span>Emplacements</span></h2>
-                <p>Retrouvez-nous chaque semaine aux endroits suivants. Consultez le planning ci-dessous pour les horaires.</p>
+                <p>Retrouvez les jours, horaires et itinéraires des emplacements confirmés.</p>
             </div>
 
-            <div class="location-list">
-                <!-- Mardi Soir -->
-                <div class="location-card reveal">
-                    <h3>Mardi Soir</h3>
+            <ol class="location-list" aria-label="Planning des emplacements du food-truck">
+                <li class="location-card reveal">
+                    <p class="location-index" aria-hidden="true">01</p>
+                    <h3>Mardi <span>soir</span></h3>
                     <p class="date-info">18h00 - 21h00</p>
-                    <p><strong>YERRES</strong><br>Avenue de la Grange<br>(Angle rue Gustave Flaubert)</p>
+                    <p class="location-address"><strong>Yerres</strong><br>Avenue de la Grange<br>Angle rue Gustave-Flaubert</p>
                     <a href="https://www.google.com/maps/search/?api=1&query=48.720292,2.497228" target="_blank"
-                        class="btn-map"><i class="fas fa-map-marker-alt"></i> Itinéraire</a>
-                </div>
+                        rel="noopener noreferrer" class="btn-map"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Itinéraire</a>
+                </li>
 
-                <!-- Mercredi Midi -->
-                <div class="location-card reveal">
-                    <h3>Mercredi Midi</h3>
+                <li class="location-card reveal">
+                    <p class="location-index" aria-hidden="true">02</p>
+                    <h3>Mercredi <span>midi</span></h3>
                     <p class="date-info">11h45 - 14h00</p>
-                    <p><strong>YERRES</strong><br>Parvis du CEC</p>
+                    <p class="location-address"><strong>Yerres</strong><br>Parvis du CEC</p>
                     <a href="https://www.google.com/maps/search/?api=1&query=CEC+Yerres" target="_blank"
-                        class="btn-map"><i class="fas fa-map-marker-alt"></i> Itinéraire</a>
-                </div>
+                        rel="noopener noreferrer" class="btn-map"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Itinéraire</a>
+                </li>
 
-                <!-- Mercredi Soir -->
-                <div class="location-card reveal">
-                    <h3>Mercredi Soir</h3>
+                <li class="location-card reveal">
+                    <p class="location-index" aria-hidden="true">03</p>
+                    <h3>Mercredi <span>soir</span></h3>
                     <p class="date-info">18h00 - 21h00</p>
-                    <p><strong>BRUNOY</strong><br>Parvis de la Gare</p>
+                    <p class="location-address"><strong>Brunoy</strong><br>Parvis de la gare</p>
                     <a href="https://www.google.com/maps/search/?api=1&query=Gare+de+Brunoy" target="_blank"
-                        class="btn-map"><i class="fas fa-map-marker-alt"></i> Itinéraire</a>
-                </div>
+                        rel="noopener noreferrer" class="btn-map"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Itinéraire</a>
+                </li>
 
-                <!-- Jeudi (Variable) -->
-                <div class="location-card reveal" style="border-left-color: #888;">
-                    <h3>Jeudi</h3>
-                    <p class="date-info">Midi & Soir</p>
-                    <p><strong>EMPLACEMENT VARIABLE</strong><br>Appelez-moi pour savoir où je me trouve ce jeudi !</p>
-                    <a href="#" class="btn-map protected-phone" style="background-color: var(--secondary-color);"><i
-                            class="fas fa-phone-alt"></i> Appeler</a>
-                </div>
+                <li class="location-card reveal">
+                    <p class="location-index" aria-hidden="true">04</p>
+                    <h3>Jeudi <span>soir</span></h3>
+                    <p class="date-info">18h00 - 21h00</p>
+                    <p class="location-address"><strong>Boussy-Saint-Antoine</strong><br>Place de la ferme</p>
+                    <a href="https://www.google.com/maps/search/?api=1&amp;query=Place+de+la+ferme+Boussy-Saint-Antoine"
+                        target="_blank" rel="noopener noreferrer" class="btn-map"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Itinéraire</a>
+                </li>
 
-                <!-- Vendredi Midi -->
-                <div class="location-card reveal">
-                    <h3>Vendredi Midi</h3>
+                <li class="location-card reveal">
+                    <p class="location-index" aria-hidden="true">05</p>
+                    <h3>Vendredi <span>midi</span></h3>
                     <p class="date-info">11h45 - 14h00</p>
-                    <p><strong>VAL D'YERRES</strong><br>Hôpital Privé</p>
+                    <p class="location-address"><strong>Val d'Yerres</strong><br>Hôpital Privé</p>
                     <a href="https://www.google.com/maps/search/?api=1&query=Hopital+Prive+du+Val+d+Yerres"
-                        target="_blank" class="btn-map"><i class="fas fa-map-marker-alt"></i> Itinéraire</a>
-                </div>
-            </div>
+                        target="_blank" rel="noopener noreferrer" class="btn-map"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Itinéraire</a>
+                </li>
+            </ol>
         </div>
     </section>
 
@@ -412,90 +444,107 @@
     </section>
 
     <section id="traiteur" class="section-padding traiteur-section">
-        <div class="container">
-            <div class="section-title reveal">
+        <div class="container traiteur-layout">
+            <div class="section-title reveal traiteur-intro">
                 <p class="eyebrow">Vos événements</p>
                 <h2>Le goût Péï <span>chez vous</span></h2>
                 <p>Une demande pour un repas de famille, un anniversaire, un baptême ou un événement professionnel ? Dites-nous simplement ce dont vous avez besoin.</p>
+                <div class="traiteur-types" aria-label="Types d'événements">
+                    <span>Anniversaire</span><span>Baptême</span><span>Repas de famille</span><span>Événement professionnel</span>
+                </div>
             </div>
-            <div class="traiteur-types" aria-label="Types d'événements">
-                <span>Anniversaire</span><span>Baptême</span><span>Repas de famille</span><span>Événement professionnel</span>
+            <div class="traiteur-path reveal">
+                <p class="traiteur-path-title">Votre demande, simplement</p>
+                <ol class="traiteur-steps">
+                    <li><span>1</span><div><strong>Votre événement</strong><p>Indiquez le type d'événement.</p></div></li>
+                    <li><span>2</span><div><strong>Les informations utiles</strong><p>Précisez la date, le lieu et le nombre de personnes.</p></div></li>
+                    <li><span>3</span><div><strong>Votre message</strong><p>Ajoutez les détails de votre demande.</p></div></li>
+                </ol>
+                <p class="traiteur-cta"><a class="btn btn-primary" href="#reservation">Décrire mon événement</a></p>
             </div>
-            <p class="traiteur-cta"><a class="btn btn-primary" href="#reservation">Faire une demande</a></p>
         </div>
     </section>
 
     <!-- Section Réservation & Contact -->
     <section id="reservation" class="section-padding">
-        <div class="container">
-            <div class="section-title reveal" style="text-align: center; margin-bottom: 40px;">
-                <h2>Privatisez-moi / <span>Contact</span></h2>
-                <p>Envie de réserver pour un événement ou de commander ? Remplissez ce formulaire.</p>
+        <div class="container reservation-layout">
+            <div class="section-title reveal reservation-intro">
+                <p class="eyebrow">Votre demande traiteur</p>
+                <h2>Parlons de votre <span>événement</span></h2>
+                <p id="form-intro">Renseignez les informations dont vous disposez. Les champs marqués d'un astérisque sont obligatoires.</p>
+                <p class="reservation-contact">Vous préférez échanger directement ?<br>
+                    <a href="#" class="protected-phone"><i class="fas fa-phone-alt" aria-hidden="true"></i> <span>...</span></a>
+                </p>
             </div>
 
             <div class="contact-form-container reveal">
-                <!-- 
-                    IMPORTANT POUR LE CLIENT :
-                    Pour que ce formulaire fonctionne, vous devez :
-                    1. Aller sur https://formspree.io/ (c'est gratuit).
-                    2. Créer un "New Form" et entrer votre email pour recevoir les messages.
-                    3. Copier l'URL qu'ils vous donnent (ex: https://formspree.io/f/xzy...)
-                    4. Remplacer "VOTRE_LIEN_FORMSPREE_ICI" ci-dessous par cette URL.
-                -->
-                <form action="https://formspree.io/f/xdalknjg" method="POST" id="contact-form">
-                    <!-- Protection Honeypot améliorée -->
+                <form action="https://formspree.io/f/xdalknjg" method="POST" id="contact-form" aria-describedby="form-intro">
                     <div style="display:none;">
                         <label>Si vous êtes un humain, laissez ce champ vide :</label>
                         <input type="text" name="b_website_url" tabindex="-1" value="">
                     </div>
 
-                    <div class="form-group">
-                        <label for="nom">Nom & Prénom</label>
-                        <input type="text" id="nom" name="nom" required placeholder="Votre nom complet">
+                    <fieldset>
+                        <legend>Vos coordonnées</legend>
+                        <div class="form-grid">
+                            <div class="form-group form-group-wide">
+                                <label for="nom">Nom &amp; Prénom *</label>
+                                <input type="text" id="nom" name="nom" required autocomplete="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" required autocomplete="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="tel">Téléphone *</label>
+                                <input type="tel" id="tel" name="tel" required autocomplete="tel" inputmode="tel">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Votre événement</legend>
+                        <div class="form-grid">
+                            <div class="form-group form-group-wide">
+                                <label for="type">Type d'événement</label>
+                                <select id="type" name="type">
+                                    <option value="">Sélectionnez un type d'événement</option>
+                                    <option value="simple">Simple Repas / Commande</option>
+                                    <option value="anniversaire">Anniversaire</option>
+                                    <option value="bapteme">Baptême</option>
+                                    <option value="famille">Repas de famille</option>
+                                    <option value="mariage">Lendemain de mariage</option>
+                                    <option value="pro">Événement professionnel</option>
+                                    <option value="autre">Autre</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="date-evenement">Date <span class="optional">(optionnel)</span></label>
+                                <input type="date" id="date-evenement" name="date_evenement">
+                            </div>
+                            <div class="form-group">
+                                <label for="nombre-personnes">Nombre de personnes <span class="optional">(optionnel)</span></label>
+                                <input type="number" id="nombre-personnes" name="nombre_personnes" min="1" inputmode="numeric">
+                            </div>
+                            <div class="form-group form-group-wide">
+                                <label for="lieu-evenement">Lieu <span class="optional">(optionnel)</span></label>
+                                <input type="text" id="lieu-evenement" name="lieu_evenement" autocomplete="street-address">
+                            </div>
+                            <div class="form-group form-group-wide">
+                                <label for="message">Votre message</label>
+                                <textarea id="message" name="message" rows="5"></textarea>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <div class="form-group captcha-group">
+                        <label for="captcha-answer">Vérification : combien font <span id="captcha-question">...</span> ?</label>
+                        <input type="number" id="captcha-answer" name="captcha_answer" required inputmode="numeric">
                     </div>
 
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required placeholder="votre@email.com">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="tel">Téléphone</label>
-                        <input type="tel" id="tel" name="tel" required placeholder="0692...">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="type">Type d'événement</label>
-                        <select id="type" name="type">
-                            <option value="simple">Simple Repas / Commande</option>
-                            <option value="anniversaire">Anniversaire</option>
-                            <option value="bapteme">Baptême</option>
-                            <option value="famille">Repas de famille</option>
-                            <option value="mariage">Lendemain de mariage</option>
-                            <option value="pro">Événement professionnel</option>
-                            <option value="autre">Autre</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message">Message / Détails (Date, Lieu, nbre personnes...)</label>
-                        <textarea id="message" name="message" rows="5"
-                            placeholder="Bonjour, je souhaiterais réserver pour 10 personnes le..."></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="captcha">Vérification : Combien font <span id="captcha-question">...</span>
-                            ?</label>
-                        <input type="number" id="captcha-answer" name="captcha_answer" required
-                            placeholder="Votre réponse">
-                    </div>
-
-                    <button type="submit" class="btn btn-primary" id="submit-btn" style="width: 100%;">Envoyer ma
-                        demande</button>
-                    <p id="form-message" style="display:none; text-align:center; margin-top:10px; font-weight:bold;">
-                    </p>
-                    <p style="font-size: 0.8rem; margin-top: 10px; color: #888; text-align: center;">* Réponse sous 24h.
-                    </p>
+                    <button type="submit" class="btn btn-primary" id="submit-btn">Envoyer ma demande</button>
+                    <p id="form-message" aria-live="polite" style="display:none; text-align:center; margin-top:10px; font-weight:bold;"></p>
+                    <p class="form-note">L'envoi transmet votre demande à Couleurs Péï.</p>
                 </form>
             </div>
         </div>
@@ -547,7 +596,7 @@
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2024 Couleurs Péï - Food Truck Réunionnais | Site réalisé avec passion.</p>
+                <p>&copy; 2026 Couleurs Péï - Food Truck Réunionnais | Site réalisé avec passion.</p>
             </div>
         </div>
     </footer>
@@ -567,43 +616,43 @@
             }
         });
 
-        // Gestion du Menu Mobile
+        // Gestion du menu mobile
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
+        const closeBtn = document.querySelector('.menu-close-btn button');
 
-        // Toggle via Hamburger
+        const closeMobileMenu = (returnFocus = false) => {
+            navLinks.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
+            hamburger.setAttribute('aria-label', 'Ouvrir le menu');
+            hamburger.querySelector('i').classList.remove('fa-times');
+            hamburger.querySelector('i').classList.add('fa-bars');
+            if (returnFocus) hamburger.focus();
+        };
+
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
+            const isOpen = navLinks.classList.contains('active');
+            hamburger.setAttribute('aria-expanded', String(isOpen));
+            hamburger.setAttribute('aria-label', isOpen ? 'Fermer le menu' : 'Ouvrir le menu');
             const icon = hamburger.querySelector('i');
-            if (navLinks.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                // On cache l'icone hamburger quand le menu est ouvert car on a la croix dedans
-                // ou on la laisse en croix, au choix. Ici on la laisse transformer.
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
+            icon.classList.toggle('fa-bars', !isOpen);
+            icon.classList.toggle('fa-times', isOpen);
+            if (isOpen && closeBtn) closeBtn.focus();
         });
 
-        // Fermeture via Croix dédiée (Nouveau)
-        const closeBtn = document.querySelector('.menu-close-btn');
         if (closeBtn) {
-            closeBtn.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                // Reset icone hamburger
-                const icon = hamburger.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            });
+            closeBtn.addEventListener('click', () => closeMobileMenu(true));
         }
 
         document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                hamburger.querySelector('i').classList.remove('fa-times');
-                hamburger.querySelector('i').classList.add('fa-bars');
-            });
+            link.addEventListener('click', () => closeMobileMenu());
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && navLinks.classList.contains('active')) {
+                closeMobileMenu(true);
+            }
         });
 
         // Animation d'apparition au scroll (Intersection Observer)
@@ -710,7 +759,7 @@
         });
     </script>
     <!-- Bandeau de Cookies -->
-    <div id="cookie-banner">
+    <div id="cookie-banner" role="dialog" aria-label="Préférences relatives aux cookies">
         <h4>Votre vie privée nous importe 🥥</h4>
         <p>Nous utilisons des cookies pour analyser l'audience de notre site et améliorer votre expérience.</p>
         <div class="cookie-btns">

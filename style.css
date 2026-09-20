@@ -934,3 +934,554 @@ footer {
     .quick-action i { color: var(--primary-color); font-size: 1.1rem; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+
+/* Maquette UX 2026 — accueil, emplacements et parcours traiteur */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    background: var(--bg-light);
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 4px;
+}
+
+.btn-primary {
+    color: var(--secondary-color);
+}
+
+header.scrolled {
+    background: rgba(249, 249, 249, .96);
+}
+
+.nav-links {
+    gap: 30px;
+}
+
+.hamburger,
+.menu-close-btn button {
+    border: 0;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+}
+
+.hero {
+    min-height: 720px;
+    height: min(900px, 100svh);
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.hero-background {
+    background:
+        linear-gradient(90deg, rgba(20, 31, 48, .94) 0%, rgba(44, 58, 81, .78) 48%, rgba(44, 58, 81, .28) 100%),
+        url('Photo_Menu_Hero.png');
+    background-position: center;
+}
+
+.hero-content {
+    width: 100%;
+    padding-top: 90px;
+}
+
+.hero-content > * {
+    max-width: 760px;
+}
+
+.hero-kicker {
+    margin-bottom: 18px !important;
+    color: #fff;
+    font-size: .8rem !important;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+}
+
+.hero-content h1 {
+    color: #fff;
+    font-size: clamp(2.6rem, 5vw, 4.8rem);
+    line-height: 1.02;
+    letter-spacing: -.02em;
+    text-transform: none;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, .25);
+}
+
+.hero-content > p:not(.hero-kicker) {
+    margin: 0 0 32px;
+    font-size: 1.15rem;
+    line-height: 1.7;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.hero-actions .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: none;
+}
+
+.hero-actions .btn-secondary {
+    border: 1px solid rgba(255, 255, 255, .65);
+    background: rgba(44, 58, 81, .62);
+}
+
+.hero-menu-link {
+    display: inline-block;
+    margin-top: 26px;
+    color: #fff;
+    font-size: .9rem;
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-color: var(--primary-color);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 6px;
+}
+
+.section-title {
+    text-align: center;
+}
+
+.section-title > p:not(.eyebrow) {
+    max-width: 700px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.eyebrow {
+    margin-bottom: 10px;
+}
+
+.planning-section {
+    background:
+        radial-gradient(circle at 8% 12%, rgba(203, 211, 224, .42), transparent 26rem),
+        var(--bg-light);
+}
+
+.location-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    max-width: 980px;
+    margin: 42px auto 0;
+    padding: 0;
+}
+
+.location-card {
+    position: relative;
+    width: auto;
+    min-height: 300px;
+    align-items: flex-start;
+    overflow: hidden;
+    padding: 30px;
+    border: 1px solid rgba(44, 58, 81, .12);
+    border-top: 4px solid var(--primary-color);
+    border-left: 1px solid rgba(44, 58, 81, .12);
+    border-radius: 4px 4px 18px 18px;
+    box-shadow: 0 14px 38px rgba(44, 58, 81, .08);
+    text-align: left;
+}
+
+.location-card:last-child {
+    grid-column: 1 / -1;
+}
+
+.location-card h3 {
+    margin: 3px 0 8px;
+    font-size: 1.65rem;
+    text-transform: none;
+}
+
+.location-card h3 span {
+    color: var(--primary-color);
+}
+
+.location-card .date-info {
+    color: var(--secondary-color) !important;
+    font-size: .9rem !important;
+}
+
+.location-index {
+    position: absolute;
+    top: 17px;
+    right: 22px;
+    color: rgba(44, 58, 81, .12);
+    font-family: var(--font-heading);
+    font-size: 2.7rem;
+    line-height: 1;
+}
+
+.location-address {
+    color: #4b5563;
+}
+
+.location-address strong {
+    color: var(--secondary-color);
+    font-size: 1.02rem;
+    text-transform: uppercase;
+}
+
+.location-card-variable {
+    border-top-color: var(--accent-color);
+    background: #f3f5f8;
+}
+
+.location-card .btn-map {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    margin-top: auto;
+    padding: 10px 20px;
+}
+
+.traiteur-section {
+    position: relative;
+    overflow: hidden;
+    text-align: left;
+}
+
+.traiteur-section::after {
+    position: absolute;
+    right: -7rem;
+    bottom: -8rem;
+    width: 24rem;
+    height: 24rem;
+    border: 1px solid rgba(186, 150, 105, .28);
+    border-radius: 50%;
+    content: '';
+}
+
+.traiteur-layout {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, .9fr) minmax(360px, 1.1fr);
+    gap: clamp(40px, 8vw, 100px);
+    align-items: center;
+}
+
+.traiteur-intro {
+    text-align: left;
+}
+
+.traiteur-intro h2 {
+    margin-bottom: 20px;
+    text-align: left;
+    text-transform: none;
+}
+
+.traiteur-intro .section-title p {
+    margin-left: 0;
+}
+
+.traiteur-types {
+    justify-content: flex-start;
+    margin-bottom: 0;
+}
+
+.traiteur-path {
+    padding: clamp(28px, 5vw, 48px);
+    border-radius: 24px 6px 24px 6px;
+    background: var(--bg-light);
+    color: var(--secondary-color);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, .18);
+}
+
+.traiteur-path-title {
+    margin-bottom: 24px;
+    font-family: var(--font-heading);
+    font-size: 1.55rem;
+}
+
+.traiteur-steps {
+    display: grid;
+    gap: 20px;
+    padding: 0;
+}
+
+.traiteur-steps li {
+    display: grid;
+    grid-template-columns: 42px 1fr;
+    gap: 14px;
+    align-items: start;
+}
+
+.traiteur-steps li > span {
+    display: grid;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--accent-color);
+    font-weight: 700;
+}
+
+.traiteur-steps strong {
+    display: block;
+    margin-bottom: 2px;
+}
+
+.traiteur-steps p {
+    color: #586174;
+    font-size: .9rem;
+}
+
+.traiteur-path .traiteur-cta {
+    margin: 30px 0 0;
+}
+
+#reservation {
+    background: #eef1f5;
+}
+
+.reservation-layout {
+    display: grid;
+    grid-template-columns: minmax(260px, .65fr) minmax(0, 1.35fr);
+    gap: clamp(36px, 7vw, 90px);
+    align-items: start;
+}
+
+.reservation-intro {
+    position: sticky;
+    top: 110px;
+    text-align: left;
+}
+
+.reservation-intro h2 {
+    text-align: left;
+    text-transform: none;
+}
+
+.reservation-intro > p {
+    margin-left: 0 !important;
+}
+
+.reservation-contact {
+    margin-top: 28px !important;
+    padding-top: 24px;
+    border-top: 1px solid rgba(44, 58, 81, .18);
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+
+.reservation-contact a {
+    display: inline-block;
+    margin-top: 8px;
+    color: var(--secondary-color);
+    font-weight: 700;
+}
+
+.contact-form-container {
+    max-width: none;
+    padding: clamp(24px, 5vw, 48px);
+    border: 1px solid rgba(44, 58, 81, .1);
+    border-radius: 6px 24px 6px 24px;
+    box-shadow: 0 20px 55px rgba(44, 58, 81, .1);
+}
+
+.contact-form-container fieldset {
+    margin: 0 0 28px;
+    padding: 0;
+    border: 0;
+}
+
+.contact-form-container legend {
+    width: 100%;
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(44, 58, 81, .14);
+    color: var(--secondary-color);
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 18px;
+}
+
+.form-group-wide {
+    grid-column: 1 / -1;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    min-height: 48px;
+    border-color: #b8c0cc;
+    background: #fff;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.optional {
+    color: #667085;
+    font-size: .8rem;
+    font-weight: 400;
+}
+
+.captcha-group {
+    max-width: 280px;
+}
+
+#submit-btn {
+    width: 100%;
+}
+
+.form-note {
+    margin-top: 14px;
+    color: #667085;
+    font-size: .8rem;
+    text-align: center;
+}
+
+@media (max-width: 900px) {
+    .traiteur-layout,
+    .reservation-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .reservation-intro {
+        position: static;
+    }
+}
+
+@media (max-width: 768px) {
+    html {
+        scroll-padding-top: 72px;
+    }
+
+    .nav-links {
+        overflow-y: auto;
+    }
+
+    .menu-close-btn button {
+        padding: 10px;
+        color: #fff;
+        font-size: 2rem;
+    }
+
+    .hero {
+        min-height: 680px;
+        height: auto;
+        padding: 120px 0 88px;
+    }
+
+    .hero-background {
+        background:
+            linear-gradient(180deg, rgba(30, 42, 61, .82), rgba(30, 42, 61, .94)),
+            url('Photo_Menu_Hero.png');
+        background-position: 58% center;
+    }
+
+    .hero-content {
+        padding-top: 0;
+        text-align: left;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(2.25rem, 11vw, 3.25rem);
+    }
+
+    .hero-content > p:not(.hero-kicker) {
+        padding: 0;
+    }
+
+    .hero-actions {
+        display: grid;
+    }
+
+    .hero-actions .btn {
+        margin: 0 !important;
+    }
+
+    .location-list {
+        grid-template-columns: 1fr;
+    }
+
+    .location-card:last-child {
+        grid-column: auto;
+    }
+
+    .location-card {
+        min-height: 280px;
+    }
+
+    .traiteur-layout {
+        gap: 32px;
+    }
+
+    .traiteur-path {
+        padding: 26px 22px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group-wide {
+        grid-column: auto;
+    }
+
+    .contact-form-container {
+        padding: 24px 18px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .hero-background {
+        animation: none;
+    }
+}
+
+/* Action menu mobile : contraste élevé sur l'image comme après défilement. */
+@media (max-width: 768px) {
+    .hamburger {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 48px;
+        min-height: 48px;
+        padding: 0;
+        border: 2px solid rgba(255, 255, 255, .92);
+        border-radius: 50%;
+        background: var(--primary-color);
+        color: var(--secondary-color);
+        box-shadow: 0 4px 14px rgba(0, 0, 0, .28);
+    }
+
+    header.scrolled .hamburger {
+        border-color: var(--secondary-color);
+        background: var(--primary-color);
+        color: var(--secondary-color);
+    }
+}
